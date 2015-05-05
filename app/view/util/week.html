@@ -1,0 +1,15 @@
+#{if ($smarty.now|date_format:'%w')==1}
+一
+#{elseif ($smarty.now|date_format:'%w')==2}
+二
+#{elseif ($smarty.now|date_format:'%w')==3}
+三
+#{elseif ($smarty.now|date_format:'%w')==4}
+四
+#{elseif ($smarty.now|date_format:'%w')==5}
+五
+#{elseif ($smarty.now|date_format:'%w')==6}
+六
+#{elseif ($smarty.now|date_format:'%w')==0}
+日
+#{/if}

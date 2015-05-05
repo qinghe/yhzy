@@ -1,0 +1,46 @@
+#{if $act=='' || $act=='index'}
+<div class="t"><a href="#{url c=$con a='toAdd'}">添加新联系人</a><span>管理中心  -联系人列表</span></div>
+
+<div class="l"> 
+<table cellspacing="1" cellpadding="3"> 
+<tr>
+<th>联系人</th>
+<th>产品类别</th>
+<th width="30px">编辑</th>
+<th width="40px">删除</th>
+</tr>
+#{foreach key=key item=item from=$obs}
+<tr align="center">
+<td>#{$item.name}</td>
+<td>#{$item.sort.name}</td>
+<td align="center">
+<img src="images/mgr/icon_edit.gif" title="编辑" onclick="url('#{url c=$con a='toAdd'  id=$item.id}')"/></td>
+
+<td align="center"><img src="images/mgr/icon_drop.gif" title="删除" onclick="isDelete('#{url c=$con a='del' id=$item.id}')"/></td>
+</tr>
+#{/foreach} 
+</table> 
+</div>
+
+#{elseif $act=='toAdd'}
+<div class="t"><a href="#{url c=$con}">联系人列表</a><span>管理中心  - 添加新联系人</span></div>
+
+<div class="e">
+<form action="#{url c=$con a='add' id=$ob.id}" method="post">
+<table>
+<tr><th>名称：</th><td><input name="name" style="width:300px;" value="#{$ob.name}"/></td></tr>
+<tr><th>类别：</th><td>
+<select name="sortid">
+	#{foreach item=item from=$infos}
+	<option value="#{$item.id}" #{if $ob.sortid==$item.id}selected#{/if}>#{$item.name}</option>
+	#{/foreach}
+</select>
+</td></tr>
+<tr><th>电话：</th><td><input  name="tel" value="#{$ob.tel}"/></td></tr>
+<tr><th>E-MAIL：</th><td><input name="mail" value="#{$ob.tel}"/></td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+
+#{/if}

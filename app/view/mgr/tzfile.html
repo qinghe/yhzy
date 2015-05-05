@@ -1,0 +1,83 @@
+#{assign var='title' value=$ob.name}
+#{assign var='ic_id' value=$smarty.get.ic_id}
+#{if $act=='' || $act=='index'}
+<div class="t"><a href="#{url c=$con a='TofileEdit' ic_id=$ob.id}">上传新#{$title}</a><span>管理中心  - #{$title}列表</span></div>
+
+<form action="#{url c=$con a='del' ic_id=$ob.id}" method="post" name="delForm">
+<div class="l"> 
+</td>
+<table cellspacing="1" cellpadding="3"> 
+<tr>
+#{if  $ic_id=='7'}
+<th width="200px">名称</th>
+<th width="220px">视频文件</th>
+<th>创建时间</th>
+#{elseif  $ic_id!='7'}
+<th width="200px">名称</th>
+<th width="220px">word文件</th>
+<th width="220px">excel文件</th>
+<th width="220px">pdf文件</th>
+<th>创建时间</th>
+#{/if}
+<th>编辑</th>
+</tr>
+#{foreach key=key item=item from=$files}
+<tr>
+#{if  $ic_id=='7'}
+<td align="center">#{$item.name}</td>
+<td align="center">#{$item.file3}</td>
+<td align="center">#{$item.createtime}</td>
+#{elseif  $ic_id!='7'}
+<td align="center">#{$item.name}</td>
+<td align="center">#{$item.file1}</td>
+<td align="center">#{$item.file2}</td>
+<td align="center">#{$item.file3}</td>
+<td align="center">#{$item.createtime}</td>
+</td>
+#{/if}
+<td align="center">
+<img src="images/mgr/icon_edit.gif" title="编辑" 	 onclick="url('#{url c=$con a='TofileEdit' ic_id=$ob.id id=$item.id}')"/>
+<img src="images/mgr/icon_drop.gif" title="删除" onclick="isDelete('#{url c=$con a='del' ic_id=$ob.id id=$item.id}')"/>
+</tr>
+#{/foreach} 
+</table> 
+#{include file="mgr/common/mgr_pager.html"}
+</div>
+</form>
+
+#{elseif $act=='TofileEdit' && $ic_id!='7'}
+<div class="t"><a href="#{url c=$con a=index ic_id=$ic_id  id=$ob.id}">#{$title}列表</a><span>管理中心  - 上传新#{$title}</span></div>
+
+<div class="e">
+<form action="#{url c=$con a='fileEdit'  ic_id=$ob.ic_id  id=$ob.id}" method="post" enctype="multipart/form-data">
+<table>
+<tr><th>上传word：</th><td><input type="file" name="file1" value="#{$ob.file1}"/><input type="HIDDEN" name="ic_id" value="#{$ic_id}"/></td></tr>
+<tr><th>上传excel：</th><td><input type="file" name="file2"   value="#{$ob.file1}"/></td></tr>
+<tr><th>上传pdf：</th><td><input type="file" name="file3"  value="#{$ob.file1}"/></td></tr>
+<tr><th>名称：</th><td><input type="text" name="name"  value="#{$ob.name}"/></td></tr>
+#{if $ic_id=='6'}
+<tr><th>备案类别：</th><td><input type="text" name="sort"  value="#{$ob.sort}"/></td></tr>
+#{elseif $ic_id!='6'}
+<input type="hidden" name="sort"/>
+#{/if}
+<tr><th>时间：</th><td>#{calendar name='createtime' value=$ob.createtime}	</td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+#{elseif $act=='TofileEdit' && $ic_id=='7'}
+<div class="t"><a href="#{url c=$con a=index ic_id=$ic_id  id=$ob.id}">#{$title}列表</a><span>管理中心  - 上传新#{$title}</span></div>
+
+<div class="e">
+<form action="#{url c=$con a='fileEdit' ic_id=$ob.ic_id  id=$ob.id}" method="post" enctype="multipart/form-data">
+<table>
+<tr><th>上传视频：</th><td><input type="file" name="file3"/><input type="HIDDEN" name="ic_id" value="#{$ic_id}"/></td></tr>
+<tr><th>名称：</th><td><input type="text" name="name"  value="#{$ob.name}"/></td></tr>
+
+<tr><th>时间：</th><td>#{calendar name='createtime' value=$ob.createtime}	</td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+
+#{/if}

@@ -1,0 +1,50 @@
+#{assign var='title' value='幻灯片'}
+#{assign var=up value=$smarty.get.up}
+#{assign var=pc_id value=$smarty.get.pc_id}
+#{if $act=='' || $act=='index'}
+
+<div class="t"><a href="#{url c=$con a='toEdit' pc_id=$pc_id up=$up  }">录入新#{$title}</a><span>管理中心  - #{$title}列表</span></div>
+<form action="#{url c=$con a='del'}" method="post" name="delForm">
+<div class="l">
+<table cellspacing="1" cellpadding="3"> 
+<tr>
+<th width="20px"><img src="images/mgr/icon_drop.gif" onclick="return delSub()"/></th>
+<th width="40px">排序</th>
+<th>#{$title}名称</th>
+<!--<th>分类</th>-->
+<th width="40px">推荐</th>
+<th width="40px">编辑</th>
+</tr>
+#{foreach name=name item=item from=$obs}
+<tr>
+<td align="center"><input type="checkbox" name="id[]" value="#{$item.id}"/></td>
+<td width="40px"><input id="n_#{$item.id}" type="text" style="width: 40px;" value="#{$item.number}" onchange="cnumber('#{$item.id}', '#{$con}')"/></td>
+<td>#{$item.name}</td>
+<!--<td align="center">#{$item.pc.name}</td>-->
+<td align="center"><img id="up_#{$item.id}" src="images/mgr/#{if $item.up==0}no#{else}yes#{/if}.gif" onclick="cLogin('#{$item.id}', '#{$con}', 'up')"/></td>
+<td align="center"><img src="images/mgr/icon_edit.gif" title="编辑" onclick="url('#{url c=$con a='toEdit' id=$item.id pc_id=$pc_id up=$up}')"/></td>
+</tr>
+#{/foreach} 
+</table>
+#{include file="mgr/common/mgr_pager.html"}
+</div>
+</form>
+
+#{elseif $act=='toEdit'}
+<div class="t"><a href="#{url c=$con}">#{$title}列表</a><span>管理中心  - 编辑#{$title}</span></div>
+<script type="text/javascript" charset="utf-8" src="lib/kindeditor/kindeditor.js"></script>
+
+<div class="e">
+<form action="#{url c=$con a='edit' pc_id=$pc_id up=$up}" method="post" enctype="multipart/form-data">
+<input type="hidden" name="id" value="#{$ob.id}"/>
+<table>
+
+<tr><th>名称：</th><td><input type="text" name="name" value="#{$ob.name}"/></td></tr>
+<tr><th>图片：</th><td><input type="file" name="photo"/></td></tr>
+<tr><th>链接：</th><td><input type="text" name="fun" value="#{$ob.fun}"/></td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+
+#{/if}

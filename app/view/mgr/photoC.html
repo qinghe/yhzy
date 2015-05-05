@@ -1,0 +1,53 @@
+#{assign var='pc_id' value=$smarty.get.pc_id}
+#{assign var='title' value=$pc.name}
+
+#{if $act=='' || $act=='index'}
+<div class="t"><a href="#{url c=$con a='toEdit' pc_id=$pc_id}">录入新#{$title}</a><span>管理中心  - #{$title}列表</span></div>
+
+<form action="#{url c=$con a='del' pc_id=$pc_id}" method="post" name="delForm">
+<div class="l">
+<table cellspacing="1" cellpadding="3"> 
+<tr>
+<th width="20px"><img src="images/mgr/icon_drop.gif" onclick="return delSub()"/></th>
+<th width="40px">排序</th>
+<th>#{$title}标题</th>
+<th width="150px">发布时间</th>
+<th width="30px">推荐</th>
+<th width="30px">编辑</th>
+</tr>
+#{foreach name=name item=item from=$obs}
+<tr>
+<td align="center"><input type="checkbox" name="id[]" value="#{$item.id}"/></td>
+<td width="40px"><input id="n_#{$item.id}" type="text" style="width: 40px;" value="#{$item.number}" onchange="cnumber('#{$item.id}', '#{$con}')"/></td>
+<td><a href="#{url c='common' a='jipImg' type='photo' path=$item.photo}" name="#{$item.name}" id="p#{$item.id}" class="jTip">#{$item.name}</a></td>
+<td align="center">#{$item.createtime|date_format:'%Y-%m-%d'}</td>
+<td align="center"><img id="up_#{$item.id}" src="images/mgr/#{if $item.up==0}no#{else}yes#{/if}.gif" onclick="cLogin('#{$item.id}', '#{$con}', 'up')"/></td>
+<td align="center"><img src="images/mgr/icon_edit.gif" title="编辑" onclick="url('#{url c=$con a='toEdit' id=$item.id pc_id=$pc_id}')"/></td>
+</tr>
+#{/foreach} 
+</table> 
+#{include file="mgr/common/mgr_pager.html"}
+</div>
+</form>
+
+#{elseif $act=='toEdit'}
+<div class="t"><a href="#{url c=$con pc_id=$pc_id}">#{$title}列表</a><span>管理中心  - 编辑#{$title}</span></div>
+<script type="text/javascript" charset="utf-8" src="lib/kindeditor/kindeditor.js"></script>
+
+<div class="e">
+<form action="#{url c=$con a='edit' pc_id=$pc_id}" method="post" enctype="multipart/form-data">
+<input type="hidden" name="id" value="#{$ob.id}"/>
+<table>
+<tr> 
+<th>#{$title}标题：</th> 
+<td><input name="name" type="text" style="width: 400px;" value="#{$ob.name}"/></td>
+</tr>
+<tr><th>图片：</th><td><input type="file" name="photo"/></td></tr>
+<tr><th>描述：</th><td><textarea name="fun" style="width:620px;height:50px;">#{$ob.fun}</textarea></td></tr>
+<tr><th>详细内容：</th><td>#{editor value=$ob.other}</td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+
+#{/if}

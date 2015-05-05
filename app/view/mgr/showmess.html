@@ -1,0 +1,75 @@
+#{assign var='title' value=$smarty.get.ic_name}
+#{assign var='ic_id' value=$smarty.get.ic_id}
+#{assign var='p_ic_id' value=$smarty.get.p_ic_id}
+#{if $act=='' || $act=='index'}
+
+<div class="t"><a href="#{url c=$con a='toEdit' ic_id=$ic_id p_ic_id=$p_ic_id ic_name=$title} ">录入新#{$title}</a><span>管理中心  - #{$title}列表</span></div>
+<form action="#{url c=$con a='del' ic_id=$ic_id}" method="post" name="delForm">
+<div class="l">
+<table cellspacing="1" cellpadding="3">
+<tr>
+<th width="20px"><img src="images/mgr/icon_drop.gif" onclick="return delSub()"/></th>
+<th width="40px">排序</th>
+<th>#{$title}名称</th>
+<!--<th width="40px">推荐</th>-->
+<th width="40px">热门</th>
+<th width="40px">编辑</th>
+</tr>
+#{foreach name=name item=item from=$obs}
+<tr>
+<td align="center"><input type="checkbox" name="id[]" value="#{$item.id}"/></td>
+<td width="40px"><input id="n_#{$item.id}" type="text" style="width: 40px;" value="#{$item.number}" onchange="cnumber('#{$item.id}', '#{$con}')"/></td>
+<td align="center">#{$item.name}</td>
+<!--<td align="center"><img id="up_#{$item.id}" src="images/mgr/#{if $item.up==0}no#{else}yes#{/if}.gif" onclick="cLogin('#{$item.id}', '#{$con}', 'up')"/></td>-->
+<td align="center"><img id="hot_#{$item.id}" src="images/mgr/#{if $item.hot==0}no#{else}yes#{/if}.gif" onclick="cLogin('#{$item.id}', '#{$con}', 'hot')"/></td>
+<td align="center"><img src="images/mgr/icon_edit.gif" title="编辑" onclick="url('#{url c=$con a='toEdit' id=$item.id ic_id=$item.ic_id p_ic_id=$p_ic_id ic_name=$title ic_name=$title}')"/></td>
+</tr>
+#{/foreach}
+</table>
+#{include file="mgr/common/mgr_pager.html"}
+</div>
+</form>
+#{/if}
+#{if $act=='toEdit'}
+<div class="t"><a href="#{url c=$con  ic_id=$ic_id p_ic_id=$p_ic_id ic_name=$title}">#{$title}列表</a><span>管理中心  - 编辑#{$ob.name}</span></div>
+<script type="text/javascript" charset="utf-8" src="lib/kindeditor/kindeditor.js"></script>
+
+<div class="e">
+<form action="#{url c=$con a='edit' id=$ob.id ic_id=$ic_id p_ic_id=$p_ic_id ic_name=$title }" method="post" enctype="multipart/form-data">
+<input type="hidden" name="id" value="#{$ob.id}"/>
+<input type="hidden" name="ic_id" value="#{$ic_id}"/>
+<input type="hidden" name="p_ic_id" value="#{$p_ic_id}"/>
+<table>
+<tr><th>标题：</th><td><input type="text" name="name" value="#{$ob.name}"/></td></tr>
+
+
+<tr><th>图片：</th><td><input type="file" name="photo" value="#{$ob.photo}"/></td></tr>
+#{if $ob.photo != 'default.jpg' && $ob.photo != NULL}<tr style="width: 50px; height: 50px;">
+<th>图片略缩图：</th><td><img src="app/upload/info/#{$ob.photo}" width="50" height="50" /></td></tr>
+#{/if}
+
+</td></tr>
+
+<!--tr><th>选择分类：</th><td>
+
+<select name="f_id">
+	#{foreach name=name item=item from=$cate}
+		<option value="#{$item.id}" #{if $item.id==$ob.f_id}selected="selected"#{/if}>#{$item.name}</option>
+    #{/foreach}
+</select>
+
+</td></tr-->
+
+<tr><th>说明：</th><td colspan="2">#{editor value=$ob.other}</td></tr>
+
+<!--tr><th>相册：</th><td colspan="2">
+<script type='text/javascript'>
+    	KE.show({id : 'other1',cssPath : './css/default.css',allowFileManager : true});</script>
+		<textarea id='other1' name='other1' style='width:560px;height:400px;visibility:hidden;'>#{$ob.other1}</textarea>
+</table>
+</td></tr-->
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+#{/if}

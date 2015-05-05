@@ -1,0 +1,137 @@
+#{assign var='title' value='年检'}
+
+#{if $act==''||$act=='index'}
+<div class="t"><span>管理中心  - #{$title}列表</span></div>
+
+<form action="#{url c=$con a='del'}" method="post" name="delForm">
+<div class="l">
+<table cellspacing="1" cellpadding="3"> 
+<tr>
+<th width="20px"><img src="images/mgr/icon_drop.gif" onclick="return delSub()"/></th>
+<th>犬类经营号</th>
+<th>时间</th>
+<th>企业名称</th>
+<th width="150px">法人代表</th>
+<th width="60px">联系人</th>
+<th width="30px">电话</th>
+<th width="30px">详细信息</th>
+<th width="30px">合格</th>
+</tr>
+#{foreach key=key item=item from=$obs}
+<tr>
+<td align="center"><input type="checkbox" name="id[]" value="#{$item.id}"/></td>
+<td>#{$item.no}</td>
+<td>#{$item.year}#{$item.month}#{$item.day}</td>
+<td>#{$item.name}</td>
+<td>#{$item.faren}</td>
+<td>#{$item.contact}</td>
+<td>#{$item.tel}</td>
+
+<td align="center"><img src="images/mgr/icon_edit.gif" title="详细信息" onclick="url('#{url c=$con a='toEdit' id=$item.id ic_id=$smarty.get.ic_id}')"/></td>
+<td align="center"><img id="ischeck_#{$item.id}" src="images/mgr/#{if $item.ischeck==0}no#{else}yes#{/if}.gif" onclick="cLogin('#{$item.id}', 'admapplication', 'ischeck')"/></td>
+</tr>
+#{/foreach} 
+</table> 
+#{include file="mgr/common/mgr_pager.html"}
+</div>
+</form>
+
+#{elseif $act=='toEdit'}
+<div class="t"><a href="#{url c=$con id=$item.id ic_id=$smarty.get.ic_id }">#{$title}列表</a><span>管理中心  - 编辑#{$title}</span></div>
+	<table border="0" cellpadding="0" cellspacing="0" width="660px" style="margin:0 auto;">
+	<tr>
+		<td align="center" height="70px" colspan="2"><h1>大连市犬类经营许可证申领表</h1></td>
+	</tr>
+	<tr>
+		<td>大连养犬经营<input name="no" type="text" value="#{$appob.no}"  style="width:60px; border:none; border-bottom:1px solid #000" />号</td>
+		<td>
+			<input type="text" name="year" value="#{$appob.year}"  style="width:60px; border:none; border-bottom:1px solid #000"  />年
+			<input type="text" name="month" value="#{$appob.month}"  style="width:60px; border:none; border-bottom:1px solid #000" />月
+			<input type="text" name="day" value="#{$appob.day}"  style="width:60px; border:none; border-bottom:1px solid #000" />日
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<table border="0" cellpadding="0" cellspacing="0" width="660px" style="margin:0 auto; margin-top:15px;">
+				<tr>
+					<td style=" height:50px; width:120px;" align="center" valign="middle">企业名称:</td>
+			  <td style="height:50px; padding-left:20px; " colspan="3">
+						<input style="width:400px;" name="name" value="#{$appob.name}"   type="text" />
+					</td>
+				</tr>                                    
+				<tr>
+					<td colspan="4">
+						<table border="0" cellpadding="0" cellspacing="0" width="660px">
+							<tr>
+							  <td style=" height:50px; width:80px;" align="center" valign="middle">法人代表</td>
+								<td><input style="width:100px;" name="faren" value="#{$appob.faren}"  type="text" /></td>
+							  <td style=" height:50px; width:80px;" align="center" valign="middle">性别</td>
+								<td><input style="width:100px;" type="text" name="sex" value="#{$appob.sex}"  /></td>
+							  <td style=" height:50px; width:80px;" align="center" valign="middle">年龄</td>
+								<td><input style="width:100px;" type="text" name="age" value="#{$appob.age}"  /></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+				  <td style=" height:50px; width:120px;" align="center" valign="middle">经营项目:</td>
+			  <td style="height:50px; padding-left:20px; " colspan="3">
+						<input style="width:400px;" type="text" name="project" value="#{$appob.project}"  />
+					</td>
+				</tr>
+				<tr>
+				  <td style=" height:50px; width:120px;" align="center" valign="middle">经济性质:</td>
+			  <td style="height:50px; padding-left:20px; " colspan="3">
+						<input style="width:400px;" type="text" name="attr" value="#{$appob.attr}"  />
+					</td>
+				</tr>
+				<tr>
+				  <td style=" height:50px; width:120px;" align="center" valign="middle">经营地址:</td>
+			  <td style="height:50px; padding-left:20px; " colspan="3">
+						<input style="width:400px;" type="text" name="address" value="#{$appob.address}"  />
+					</td>
+				</tr>
+				<tr>
+				  <td style=" height:50px; width:120px;" align="center" valign="middle">经营范围及<br />条件:</td>
+			  <td style="height:50px; padding-left:20px; " colspan="3">
+						<input style="width:400px;" type="text" name="area" value="#{$appob.area}"  />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<table border="0" cellpadding="0" cellspacing="0" width="660px">
+							<tr>
+							  <td style=" height:50px; width:80px;" align="center" valign="middle">联系人姓名</td>
+								<td><input style="width:100px;" type="text" name="contact" value="#{$appob.contact}"  /></td>
+							  <td style=" height:50px; width:80px;" align="center" valign="middle">电话</td>
+								<td><input style="width:100px;" type="text" name="tel" value="#{$appob.tel}"  /></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+				  <td style=" height:50px; width:120px;" align="center" valign="middle">区（县）局意见</td>
+			  <td style="height:50px; padding-left:20px; " colspan="3">
+						<input style="width:400px;" type="text" name="qyijian" value="#{$appob.qyijian}"  />
+					</td>
+				</tr>
+				<tr>
+				  <td style=" height:50px; width:120px;" align="center" valign="middle">市  局 意  见</td>
+			  <td style="height:50px; padding-left:20px; " colspan="3">
+						<input style="width:400px;" type="text" name="syijian" value="#{$appob.syijian}"  />
+					</td>
+				</tr>
+				<tr>
+				  <td style=" height:50px; width:120px;" align="center" valign="middle">备 注</td>
+			  <td style="height:50px; padding-left:20px; " colspan="3">
+						<input style="width:400px;" type="text" name="other" value="#{$appob.other}"  />
+					</td>
+				</tr>
+			
+			</table>
+		</td>
+	</tr>
+</table>
+</div>
+
+#{/if}

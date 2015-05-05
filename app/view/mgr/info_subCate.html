@@ -1,0 +1,39 @@
+#{assign var='title' value='信息分类'}
+
+#{if $act=='subcate'}
+<div class="t"><a href="#{url c=$con a='toEdit'}">录入新#{$title}</a><span>管理中心  - #{$title}列表</span></div>
+
+<div class="l">
+<table cellspacing="1" cellpadding="3">
+<tr><td colspan="6">  <a style="color: red; float: right; margin-right: 35px;" href= "javascript:history.go(-1) ">返回上一级</a></td></tr>
+#{if $subobs}
+<tr>
+<th width="40px">排序</th>
+<th>栏目名称</th>
+<th>查看子分类</th>
+<th width="60px">增加下级</th>
+<th width="30px">修改</th>
+<th width="30px">删除</th>
+</tr>
+#{foreach key=key item=item from=$subobs}
+<tr>
+<td width="40px"><input id="n_#{$item.id}" type="text" style="width: 40px;" value="#{$item.number}" onchange="cnumber('#{$item.id}', '#{$con}')"/></td>
+<td>#{$item.name}</td>
+<td><a href="#{url c=$con a='subcate' id=$item.id}">查看子分类</a></td>
+<td align="center">
+<img src="images/mgr/icon_add.gif" title="增加下级" onclick="url('#{url c=$con a='toLevel' ic_id=$item.id}')"/>
+</td>
+<td>
+<img src="images/mgr/icon_edit.gif" title="编辑" onclick="url('#{url c=$con a='toEdit' id=$item.id}')"/>
+</td>
+<td>
+<img src="images/mgr/icon_drop.gif" title="删除" onclick="isDelete('#{url c=$con a='del' id=$item.id}')"/>
+</td>
+</tr>
+#{/foreach}
+#{else}
+<tr><td style="text-align: center;">暂无相关子分类</td></tr>
+#{/if}
+</table>
+</div>
+#{/if}

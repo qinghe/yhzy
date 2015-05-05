@@ -1,0 +1,26 @@
+#{assign var='title' value=$ob.name}
+#{assign var='ic_id' value=$smarty.get.ic_id}
+<div class="t"><span>管理中心  - 编辑#{$title}</span></div>
+<script type="text/javascript" charset="utf-8" src="lib/kindeditor/kindeditor.js"></script>
+
+<div class="e">
+#{if $ic_id==2}
+<form action="#{url c=$con a='edit' ic_id=$ob.id}" method="post">
+<table>
+<tr>
+<td style="font-size: 16px;font-weight: bold;" align="left">编辑#{$ob.name}</td>
+<td>图片链接地址：<input type="text" name="img" value="#{$ob.other}"/></td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+#{elseif $ic_id==1}
+<form action="#{url c=$con a='edit' ic_id=$ob.id}" method="post">
+<table>
+<tr>
+<td style="font-size: 16px;font-weight: bold;" align="left">编辑#{$ob.name}</td>
+<td>#{editor value=$ob.other}</td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+#{/if}
+</div>

@@ -1,0 +1,21 @@
+<div class="t"><span>管理中心  - 网站参数修改</span></div>
+<style>table input{width: 500px;}</style>
+<script type="text/javascript" charset="utf-8" src="lib/kindeditor/kindeditor.js"></script>
+
+<div class="e">
+<form action="#{url c=$con a='edit'}" method="post">
+<table> 
+<tr><th>网站名称：</th><td><input type="text" name="name" value="#{$inis.name}"/></td></tr>
+<tr><th>网址：</th><td><input type="text" name="web" value="#{$inis.web}"/></td></tr>
+<tr><th>网站标题：</th><td><input type="text" name="title" value="#{$inis.title}"/></td></tr>
+<tr><th>站点默认关键字：</th><td><input type="text" name="keywords" value="#{$inis.keywords}"/></td></tr>
+<tr><th>站点描述：</th><td><input type="text" name="description" value="#{$inis.description}"/></td></tr>
+<tr><th>地址：</th><td><input type="text" name="address" value="#{$inis.address}"/></td></tr>
+<tr><th>电话：</th><td><input type="text" name="tel" value="#{$inis.tel}"/></td></tr>
+<tr><th>传真：</th><td><input type="text" name="fax" value="#{$inis.fax}"/></td></tr>
+<tr><th>E-mail：</th><td><input type="text" name="mail" value="#{$inis.mail}"/></td></tr>
+<tr><th>网站底部内容：</th><td>#{editor name='down' value=$inis.down}</td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>

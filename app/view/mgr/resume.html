@@ -1,0 +1,64 @@
+#{assign var='title' value='简历信息'}
+
+#{if $act==''||$act=='index'}
+<div class="t"><span>管理中心  - #{$title}列表</span></div>
+
+<form action="#{url c=$con a='del'}" method="post" name="delForm">
+<div class="l"> 
+<table cellspacing="1" cellpadding="3"> 
+<tr>
+<th width="20px"><img src="images/mgr/icon_drop.gif" onclick="return delSub()"/></th>
+<th>姓名</th>
+<th>性别</th>
+<th>学历</th>
+<th>联系电话</th>
+<th>应聘职位</th>
+<th width="150px">申请时间</th>
+<th width="30px">详细</th>
+</tr>
+#{foreach key=key item=item from=$obs}
+<tr>
+<td align="center"><input type="checkbox" name="id[]" value="#{$item.id}"/></td>
+<td>#{$item.name}</td>
+<td>#{$item.sex}</td>
+<td>#{$item.edue}</td>
+<td>#{$item.phone}</td>
+<td>#{$item.job}</td>
+<td align="center">#{$item.createtime|date_format:'%Y-%m-%d'}</td>
+<td align="center"><img src="images/mgr/icon_view.gif" title="查看" onclick="url('#{url c=$con a='x' id=$item.id}')"/></td>
+</tr>
+#{/foreach} 
+</table> 
+#{include file="mgr/common/mgr_pager.html"}
+</div>
+</form>
+
+#{elseif $act=='x'}
+<div class="t"><a href="#{url c=$con}">#{$title}列表</a><span>管理中心  - 查看#{$title}</span></div>
+
+<table width="100%" style="font-size: 12px;" border="1" align="center"> 
+<tr height="40px">
+<td class="label">姓名</td><td>#{$re.name}</td>
+<td class="label">性别</td><td>#{$re.sex}</td>
+<td class="label">出生年月</td><td>#{$re.birthday}</td>
+</tr>
+<tr height="40px">
+<td class="label">婚姻</td><td>#{$re.marriage}</td>
+<td class="label">毕业学校</td><td>#{$re.school}</td>
+<td class="label">毕业时间</td><td>#{$re.schooltime}</td>
+</tr>
+<tr height="40px">
+<td class="label">申请时间</td><td>#{$re.createtime|date_format:'%Y-%m-%d'}</td>
+<td class="label">学历</td><td>#{$re.edue}</td>
+<td class="label">应聘职位</td><td>#{$re.job}</td>
+</tr>
+<tr height="40px">
+<td class="label">地址</td><td>#{$re.addr}</td>
+<td class="label">联系电话</td><td>#{$re.phone}</td>
+<td class="label">邮箱</td><td>#{$re.mail}</td>
+</tr>
+<tr height="80px"><td class="label">水平与能力</td><td colspan="6">#{$re.other}</td></tr>
+<tr height="80px"><td class="label">个人简历</td><td colspan="6">#{$re.info}</td></tr>
+</table>
+
+#{/if}

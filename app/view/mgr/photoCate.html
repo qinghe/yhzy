@@ -1,0 +1,61 @@
+#{assign var='title' value='新闻分类'}
+
+#{if $act=='' || $act=='index'}
+<div class="t"><a href="#{url c=$con a='toEdit'}">录入新#{$title}</a><span>管理中心  - #{$title}列表</span></div>
+<div class="l"> 
+<table cellspacing="1" cellpadding="3"> 
+<tr>
+<th width="40px">排序</th>
+<th>分类名称</th>
+<th>操作</th>
+</tr>
+#{foreach key=key item=item from=$obs}
+<tr>
+<td width="40px"><input id="n_#{$item.id}" type="text" style="width: 40px;" value="#{$item.number}" onchange="cnumber('#{$item.id}','#{$con}')"/></td>
+<td>#{$item.name}</td>
+<td>
+<img src="images/mgr/icon_edit.gif" title="编辑" onclick="url('#{url c=$con a='toEdit' id=$item.id}')"/>
+<img src="images/mgr/icon_drop.gif" title="删除" onclick="isDelete('#{url c=$con a='del' id=$item.id}')"/>
+</td>  
+</tr>
+#{foreach key=key item=item from=$item.pcs}
+<tr>
+<td width="40px"><input id="n_#{$item.id}" type="text" style="width: 40px;" value="#{$item.number}" onchange="cnumber('#{$item.id}', '#{$con}')"/></td>
+<td>→#{$item.name}</td>
+<td>
+<img src="images/mgr/icon_edit.gif" title="编辑" onclick="url('#{url c=$con a='toEdit' id=$item.id}')"/>
+<img src="images/mgr/icon_drop.gif" title="删除" onclick="isDelete('#{url c=$con a='del' id=$item.id}')"/>
+</td>  
+</tr>
+#{/foreach}
+#{/foreach} 
+</table>
+</div>
+
+#{elseif $act=='toEdit'}
+<div class="t"><a href="#{url c=$con}">#{$title}列表</a><span>管理中心  - #{$title}编辑</span></div>
+
+<div class="e">
+<form action="#{url c=$con a='edit' id=$ob.id}" method="post">
+<table>
+<tr style="display: none;">
+<th>所属类别：</th>
+<td>
+<select id="pid" name="pid">
+<option value="0">一级类别</option>
+#{foreach key=key item=item from=$obs}
+<option value="#{$item.id}">#{$item.name}</option>
+#{/foreach}
+</select>
+</td>
+</tr>
+<script type="text/javascript">
+$("#pid option[value='#{$ob.pid}']").attr("selected", true);
+</script>
+<tr><th>名称：</th><td><input name="name" style="width:300px;" value="#{$ob.name}"/></td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+
+#{/if}

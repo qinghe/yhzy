@@ -1,0 +1,22 @@
+#{if $act=='backUpTo'}
+<div class="t"><span class="t2">管理中心  - 数据库备份</span></div>
+
+<div class="tip">(提示：在不了解该功能的情况下，请不要操作！)</div>
+<div class="list-div"> 
+<table cellspacing="1" cellpadding="3" style="font-size: 12px;"> 
+<tr>
+<th width="40px">删除</th>
+<th>备份文件名称</th>
+</tr>
+#{foreach key=key item=item from=$fis}
+<tr>
+<td align="center"><img src="images/mgr/icon_drop.gif" title="删除" onclick="isDelete('#{url c=$con a='backUpDel' name=$item|truncate:'26':''}')"/></td>
+<td>#{$item|truncate:'26':''}</td>
+</tr>
+#{/foreach} 
+</table> 
+</div>
+
+<div><input type="button" value=" 开始备份 " onclick="url('#{url c=$con a='backUp'}')" class="btn1"/></div>
+
+#{/if}

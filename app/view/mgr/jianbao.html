@@ -1,0 +1,91 @@
+#{assign var='title' value='项目简报'}
+
+#{if $act=='' || $act=='index'}
+<div class="t"><a href="#{url c=$con a='toEdit' ic_id=$ic_id}">录入新#{$title}</a><span>管理中心  - #{$title}列表</span></div>
+<form action="#{url c=$con a='del'}" method="post" name="delForm">
+<div class="l"> 
+<table cellspacing="1" cellpadding="3"> 
+<tr>
+<th width="20px"><img src="images/mgr/icon_drop.gif" onclick="return delSub()"/></th>
+<th>标题</th>
+<th width="150px">发布时间</th>
+<th width="50px">详细</th>
+<th width="50px">编辑</th>
+</tr>
+#{foreach key=key item=item from=$obs}
+<tr>
+<td align="center"><input type="checkbox" name="id[]" value="#{$item.id}"/></td>
+<td>#{$item.name}</td>
+<td align="center">#{$item.createtime}</td>
+<td align="center"><img src="images/mgr/icon_view.gif" title="详细" onclick="url('#{url c=$con a='x' id=$item.id}')"/></td>
+<td align="center"><img src="images/mgr/icon_edit.gif" title="编辑" onclick="url('#{url c=$con a='toUpdate' id=$item.id}')"/></td>
+</tr>
+#{/foreach}
+</table>
+#{include file="mgr/common/mgr_pager.html"}
+</div>
+</form>
+
+#{elseif $act=='x'}
+<div class="t"><a href="#{url c=$con}">#{$title}列表</a><span>管理中心  - #{$title}详细</span></div>
+
+<div class="main-div">
+<table width="100%" style="font-size: 12px;">
+<tr><td width="120px">发布时间:</td><td>#{$ob.createtime}</td></tr>
+<tr><td>标题:</td><td>#{$ob.name}</td></tr>
+<tr><td>内容:</td><td><div style="width: 400px;word-break: break-word;word-wrap: break-word;white-space: -moz-pre-wrap;white-space: -hp-pre-wrap;white-space: -o-pre-wrap;white-space: -pre-wrap;white-space: pre;white-space: pre-wrap;white-space: pre-line;">#{$ob.other}</div></td></tr>
+</table> 
+</div>
+#{elseif $act=='toEdit'}
+<div class="t"><a href="#{url c=$con ic_id=$ic_id}">#{$title}列表</a><span>管理中心  - 编辑#{$title}</span></div>
+<script type="text/javascript" src="lib/kindeditor/kindeditor.js"></script>
+<script type="text/javascript" src="js/calendar.js"></script>
+
+<div class="e">
+<form action="#{url c=$con a='edit' ic_id=$ic_id}" method="post">
+<input type="hidden" name="id" value="#{$ob.id}"/> 
+<table>
+<tr> 
+<th>查看会员：</th> 
+<td><input name="us_id" type="text" style="width: 400px;" value=""/></td>
+</tr>
+<tr> 
+<th>#{$title}标题：</th> 
+<td><input name="name" type="text" style="width: 400px;" value=""/></td>
+</tr>
+<tr>
+<th>发布时间：</th>
+<td>#{calendar name='createtime' value=$ob.createtime}</td>
+</tr>
+<tr><td colspan="2">#{editor value=$ob.text}</td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+#{elseif $act=='toUpdate'}
+<div class="t"><a href="#{url c=$con ic_id=$ic_id}">#{$title}列表</a><span>管理中心  - 编辑#{$title}</span></div>
+<script type="text/javascript" src="lib/kindeditor/kindeditor.js"></script>
+<script type="text/javascript" src="js/calendar.js"></script>
+
+<div class="e">
+<form action="#{url c=$con a='Update'}" method="post">
+<input type="hidden" name="id" value="#{$ob.id}"/> 
+<table>
+<tr> 
+<th>查看会员：</th> 
+<td><input name="us_id" type="text" style="width: 400px;" value="#{$ob.us_id}"/></td>
+</tr>
+<tr> 
+<th>#{$title}标题：</th> 
+<td><input name="name" type="text" style="width: 400px;" value="#{$ob.name}"/></td>
+</tr>
+<tr>
+<th>发布时间：</th>
+<td>#{calendar name='createtime' value=$ob.createtime}</td>
+</tr>
+<tr><td colspan="2">#{editor value=$ob.other}</td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+#{/if}

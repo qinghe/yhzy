@@ -1,0 +1,45 @@
+#{assign var='title1' value='友情链接'}
+<!-- 添加,修改 -->
+#{if $act=='toEdit'}
+<div class="t"><a href="#{url c=$con}">#{$title1}列表</a><span>管理中心  - 编辑#{$title1}</span></div>
+
+<div class="e">
+<form action="#{url c=$con a='edit'}" method="post" enctype="multipart/form-data">
+<input type="hidden" name="id" value="#{$ob.id}"/>
+<table>
+<tr><th>#{$title1}名称：</th><td><input name="name" type="text" value="#{$ob.name}"/></td></tr>
+<tr><th>#{$title1}上传图片：</th><td><input name="photo" type="file"/></td></tr>
+
+<tr><th>网址：</th><td><input type="text" name="url" value="#{$ob.url}"/></td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+
+<!-- 查询 -->
+#{elseif $act=='' || $act=='index'}
+<div class="t"><a href="#{url c=$con a='toEdit'}">录入新#{$title1}</a><span>管理中心  - #{$title1}列表</span></div>
+
+<form action="#{url c=$con a='del'}" method="post" name="delForm">
+<div class="l">
+<table cellspacing="1" cellpadding="3">
+<tr>
+<th width="20px"><img src="images/mgr/icon_drop.gif" onclick="return delSub()"/></th>
+<th>#{$title}名称</th>
+<th width="150px">网址</th>
+<th width="30px">编辑</th>
+</tr>
+#{foreach key=key item=item from=$obs}
+<tr>
+<td align="center"><input type="checkbox" name="id[]" value="#{$item.id}"/></td>
+<td>#{$item.name}</td>
+<td align="center">#{$item.url}</td>
+<td align="center"><img src="images/mgr/icon_edit.gif" title="编辑" onclick="url('#{url c=$con a='toEdit' id=$item.id from=1}')"/></td>
+</tr>
+#{/foreach}
+</table>
+#{include file="mgr/common/mgr_pager.html"}
+</div>
+</form>
+
+#{/if}

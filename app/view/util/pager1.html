@@ -1,0 +1,25 @@
+#{assign var='page_url' value='index.php?'}
+#{foreach key=key item=item from=$smarty.get}
+#{if $key!='page'}
+#{assign var='page_url' value="$page_url$key=$item&"}
+#{/if}
+#{/foreach}
+
+<div>
+<script type="text/javascript">
+function cpage(p){
+	location.href='#{$page_url}page='+p;
+}
+</script>
+<select id="page" name="page" onchange="cpage(this.value)">
+#{section name=loop loop=$pager.pageCount}
+<option value="#{$smarty.section.loop.index}">#{$smarty.section.loop.index+1}</option>
+#{/section} 
+</select>
+
+<script type="text/javascript">
+$("#page option[value='#{$smarty.get.page}']").attr("selected", true);
+</script>
+
+
+</div>

@@ -1,0 +1,33 @@
+#{if $act=='' || $act=='index'}
+<div class="t"><a href="#{url c=$con a='toAdd'}">添加新幻灯图片</a><span>管理中心  - 幻灯图片列表</span></div>
+
+<div class="l"> 
+<table cellspacing="1" cellpadding="3"> 
+<tr>
+<th>名称</th>
+<th width="40px">删除</th>
+</tr>
+#{foreach key=key item=item from=$obs}
+<tr>
+<td><a href="#{url c='common' a='jipImg' type='dimg' path=$item.photo}" name="#{$item.name}" id="p#{$item.id}" class="jTip">#{$item.name}</a></td>
+<td align="center"><img src="images/mgr/icon_drop.gif" title="删除" onclick="isDelete('#{url c=$con a='del' id=$item.id}')"/></td>
+</tr>
+#{/foreach} 
+</table> 
+</div>
+
+#{elseif $act=='toAdd'}
+<div class="t"><a href="#{url c=$con}">幻灯图片列表</a><span>管理中心  - 添加新幻灯图片</span></div>
+
+<div class="e">
+<form action="#{url c=$con a='add'}" method="post" enctype="multipart/form-data">
+<table>
+<tr><th>名称：</th><td><input name="name" style="width:300px;"/></td></tr>
+<tr><th>链接地址：</th><td><input name="url" style="width:300px;"/></td></tr>
+<tr><th>图片：</th><td><input type="file" name="photo"/></td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+
+#{/if}

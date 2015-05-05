@@ -1,0 +1,7 @@
+#{assign var='a' value=$smarty.get.a}
+#{assign var='p' value=$smarty.get.p}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>#{if $title==NULL}#{$inis.title}#{else}#{$title}#{/if}</title>
+<meta name="keywords" content="#{if $keywords==NULL}#{$inis.keywords}#{else}#{$keywords}#{/if}" />
+<meta name="Description" content="#{if $description==NULL}#{$inis.description}#{else}#{$description}#{/if}" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />

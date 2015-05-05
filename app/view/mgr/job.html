@@ -1,0 +1,196 @@
+#{assign var='title' value='年检'}
+
+#{if $act==''||$act=='index'}
+<div class="t"><span>管理中心  - #{$title}列表</span></div>
+
+<form action="#{url c=$con a='del'}" method="post" name="delForm">
+<div class="l">
+<table cellspacing="1" cellpadding="3"> 
+<tr>
+<th width="20px"><img src="images/mgr/icon_drop.gif" onclick="return delSub()"/></th>
+<th>登记号</th>
+<th>芯片号</th>
+<th>免疫号</th>
+<th width="150px">申请时间</th>
+<th width="60px">详细信息</th>
+<th width="30px">审批</th>
+</tr>
+#{foreach key=key item=item from=$obs}
+<tr>
+<td align="center"><input type="checkbox" name="id[]" value="#{$item.id}"/></td>
+<td>#{$item.QuanDengJiHao}</td>
+<td>#{$item.QuanXinPianHao}</td>
+<td>#{$item.QuanZhengHao}</td>
+<td align="center">#{$item.createtime|date_format:'%Y-%m-%d'}</td>
+<td align="center"><img src="images/mgr/icon_edit.gif" title="详细信息" onclick="url('#{url c=$con a='toEdit' id=$item.id ic_id=$item.ic_id num=$item.QuanDengJiHao card=$item.QuanXinPianHao}')"/></td>
+<td align="center"><img id="ischeck_#{$item.id}" src="images/mgr/#{if $item.ischeck==0}no#{else}yes#{/if}.gif" onclick="cLogin('#{$item.id}', 'admJob', 'ischeck')"/></td>
+</tr>
+#{/foreach} 
+</table> 
+#{include file="mgr/common/mgr_pager.html"}
+</div>
+</form>
+
+#{elseif $act=='toEdit'}
+<div class="t"><a href="#{url c=$con id=$item.id ic_id=$smarty.get.ic_id }">#{$title}列表</a><span>管理中心  - 编辑#{$title}</span></div>
+
+<table border="0" cellpadding="0" cellspacing="0" width="660px" style="margin:0 auto;">
+<tr>
+	<td align="center" height="60px" colspan="2"><h1>个人养犬注册申请表 </h1></td>
+</tr>
+<tr>
+<input type="hidden" name="id" value="#{$smarty.get.id}" />
+<input type="hidden" name="sname" value="#{$smarty.get.sname}" />
+<input type="hidden" name="tt" value="#{$smarty.get.tt}" />
+<input type="hidden" name="p" value="#{$smarty.get.p}" />
+<input type="hidden" name="QuanXinPianHao" value="#{$doginfo.QuanXinPianHao}" />
+<input type="hidden" name="QuanZhengHao" value="#{$perinfo.QuanZhengHao}" />
+	<td>编号：<input type="text" name="QuanDengJiHao" value="#{$doginfo.QuanDengJiHao}" readonly  style="border:none; border-bottom:1px solid #000" /></td>
+	<td>
+		<input type="text" style="width:60px; border:none; border-bottom:1px solid #000"  />年
+		<input type="text" style="width:60px; border:none; border-bottom:1px solid #000" />月
+		<input type="text" style="width:60px; border:none; border-bottom:1px solid #000" />日
+	</td>
+</tr>
+<tr>
+	<td colspan="2">
+		<table border="0" cellpadding="0" cellspacing="0" width="660px" style="margin:0 auto; margin-top:15px;">
+			<tr>
+				<td colspan="4">
+					<table border="0" cellpadding="0" cellspacing="0" width="660px">
+						<tr>
+							<td style=" height:40px; width:120px;" align="center" valign="middle">申请人姓名:</td>
+							<td style="height:40px; padding-left:20px; " colspan="3">
+								<input style="width:80px;" type="text" value="#{$perinfo.XingMing|gu}" readonly />
+							</td>
+							<td style=" height:40px; width:120px;" align="center" valign="middle">性  别:</td>
+							<td style="height:40px; ">
+								<input style="width:40px;" type="text" value="#{if $perinfo.XingBie|gu=='00'}男#{else}女#{/if}" readonly />
+							</td>
+							<td style=" height:40px; width:120px;" align="center" valign="middle">身份证号码:</td>
+							<td style="height:40px; padding-left:20px; ">
+								<input style="width:150px;" type="text" value="#{$perinfo.ShenFenZhengHao|gu}" readonly  />
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td style=" height:40px; width:120px;" align="center" valign="middle">现住址:</td>
+				<td style="height:40px; padding-left:20px;" colspan="3">
+					<input style="width:400px;" value="#{$perinfo.JiaTingZhuZhi|gu}" readonly  type="text" />
+				</td>
+			</tr>
+			<tr>
+				<td style=" height:40px; width:120px;" align="center" valign="middle">所属派出所:</td>
+				<td style="height:40px; padding-left:20px; ">
+					<input style="width:150px;" type="text" value="#{$perinfo.SuoShuFenJu|gu}" readonly  />
+				</td>
+				<td style=" height:40px; width:120px;" align="center" valign="middle">是否独户居住:</td>
+				<td style="height:40px; padding-left:20px; ">
+					<input style="width:150px;" type="text" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<table border="0" cellpadding="0" cellspacing="0" width="660px">
+						<tr>
+							<td style=" height:40px; width:100px;" align="center" valign="middle">申请人职业</td>
+							<td><input style="width:100px;" type="text" /></td>
+							<td style=" height:40px; width:100px;" align="center" valign="middle">固定电话</td>
+							<td><input style="width:100px;" type="text" value="#{$perinfo.GuDingDianHua|gu}" readonly   /></td>
+							<td style=" height:40px; width:100px;" align="center" valign="middle">移动电话</td>
+							<td><input style="width:100px;" type="text" value="#{$perinfo.YiDongDianHua|gu}" readonly   /></td>                                                    
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td style=" height:40px; width:120px;" align="center" valign="middle">电子信箱:</td>
+				<td style="height:40px; padding-left:20px; ">
+					<input style="width:150px;" type="text" value="#{$perinfo.email|gu}" readonly  />
+				</td>
+				<td style=" height:40px; width:120px;" align="center" valign="middle">邮政编码:</td>
+				<td style="height:40px; padding-left:20px; ">
+					<input style="width:150px;" type="text" value="#{$perinfo.YouZhengBianMa|gu}" readonly />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<table border="0" cellpadding="0" cellspacing="0" width="660px">
+						<tr>
+							<td style=" height:40px; width:100px;" align="center" valign="middle">犬  名</td>
+							<td><input style="width:100px;" type="text" value="#{$doginfo.QuanMing|gu}" readonly /></td>
+							<td style=" height:40px; width:100px;" align="center" valign="middle">雌  雄</td>
+							<td><input style="width:100px;" type="text" value="#{if $doginfo.QuanXingBie|gu=='00'}公#{else}母#{/if}" readonly  /></td>
+							<td style=" height:40px; width:100px;" align="center" valign="middle">养犬用途</td>
+							<td><input style="width:100px;" type="text" /></td>                                                    
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<table border="0" cellpadding="0" cellspacing="0" width="660px">
+						<tr>
+							<td style=" height:40px; width:100px;" align="center" valign="middle">毛  色</td>
+							<td><input style="width:100px;" type="text" value="#{$doginfo.QuanYanSe|gu}" readonly  /></td>
+							<td style=" height:40px; width:100px;" align="center" valign="middle">犬  龄</td>
+							<td><input style="width:100px;" type="text" value="#{$doginfo.QuanChuShengRiQi|guu}" readonly   /></td>
+							<td style=" height:40px; width:100px;" align="center" valign="middle">犬品种</td>
+							<td><input style="width:100px;" type="text" value="#{$doginfo.QuanPinZhong|gu}" readonly   /></td>                                                    
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td style=" height:40px; width:120px;" align="center" valign="middle">体重（公斤）:</td>
+				<td style="height:40px; padding-left:20px; ">
+					<input style="width:150px;" type="text" value="#{$doginfo.QuanTiZhong|gu}" readonly  />
+				</td>
+				<td style=" height:40px; width:120px;" align="center" valign="middle">体高（厘米）:</td>
+				<td style="height:40px; padding-left:20px; ">
+					<input style="width:150px;" type="text" value="#{$doginfo.QuanShenGao|gu}" readonly  />
+				</td>
+			</tr>
+			<tr> 
+				<td colspan="4" style="text-align:center; height:40px;"><h2>年 度 注 册</h2></td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<table border="0" cellpadding="0" cellspacing="0" width="660px">
+						<tr>
+							<td style=" height:40px; width:200px;" align="center" valign="middle">犬 免 疫 时 间</td>
+							<td style=" height:40px; width:260px;" align="center" valign="middle">免疫证号</td>
+							<td style=" height:40px; width:200px;" align="center" valign="middle">审 批 机 关</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			#{foreach item=item from = $checkinfo}
+			<tr>
+				<td colspan="4">
+					<table border="0" cellpadding="0" cellspacing="0" width="660px">
+						<tr>
+							<td style=" height:40px; width:200px;" align="center" valign="middle">
+				<input type="text" value="#{$item.createtime}" style="width:140px; border:none; border-bottom:1px solid #000"  />
+							</td>
+							<td style=" height:40px; width:260px;" align="center" valign="middle">
+			<input type="text" value="#{$item.QuanZhengHao}" style="width:140px; border:none; border-bottom:1px solid #000"  />				
+							</td>
+							<td style=" height:40px; width:200px;" align="center" valign="middle">
+			<input type="text" value="#{if $item.ischeck==0}未通过#{else}#{$item.other}#{/if}" style="width:140px; border:none; border-bottom:1px solid #000"  />
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			#{/foreach}
+		
+		</table>
+	</td>
+</tr>
+</table>
+</div>
+
+#{/if}

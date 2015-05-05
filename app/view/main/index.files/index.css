@@ -1,0 +1,231 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: Verdana;
+	font-size: 12px;
+	line-height: 150%;
+	color: #222222;
+	z-index: -9999999999;
+}
+a:link {
+	color: #222222;
+	text-decoration: none;
+}
+a:visited {
+	color: #222222;
+	text-decoration: none;
+}
+a:hover {
+	color: #FF0000;
+	text-decoration: none;
+}
+a:active {
+	color: #222222;
+	text-decoration: none;
+}
+
+.box {
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+	position: relative;
+    background-image: url(images/gd-com_bg01.gif); 
+	background-repeat:repeat-y; 
+}
+.kong {
+	background-color: #FFFFFF;
+	height: 3px;
+	margin-right: 3px;
+}
+
+.ind_l {
+	width: 257px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	background-image: url(images/gd-com_17.gif);
+}
+.ind_m {
+	width: 494px;
+	position: absolute;
+	left: 263px;
+	top: 15px;
+	height: 1138px;
+}
+.ind_r {
+	width: 235px;
+	position: absolute;
+	top: 8px;
+	right: 0px;
+	background-image: url(images/gd-com_50.gif);
+	background-repeat: repeat-y;
+}
+.nr_l {
+	padding-right: 20px;
+	padding-left: 15px;
+	position: relative;
+	
+}.nr_r {
+	padding-right: 15px;
+	padding-left: 15px;
+	position: relative;
+	padding-top:2px;*padding-top:0;_padding-top:0;
+}
+ul {
+	margin: 0px;
+	padding: 0px;
+}
+li {
+	list-style-position: outside;
+	list-style-type: lower-roman;
+	display: inline;
+	float: left;
+}
+.li_1 {
+	height: 50px;
+	width: 110px;
+	text-align: center;
+}
+.li_2 {
+	height:49px;*height:49px;_height:49px;
+	width: 102px;
+	text-align: center;
+}
+
+.line {
+	background-image: url(images/gd-com_24.gif);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	padding-top: 7px;
+	padding-bottom: 2px;
+	padding-left: 5px;
+	height: 18px;
+}
+.taocan {
+	position: relative;
+	background-image: url(images/gd-com_93.gif);
+}
+.taocan1 {
+	width: 150px;
+	position: absolute;
+	left: 7px;
+	top: 0px;
+}
+.taocan1_nr {
+	padding-bottom: 4px;
+	padding-left: 8px;
+	padding-top: 1px;
+}
+.taocan2 {
+
+	width: 150px;
+	position: absolute;
+	left: 172px;
+	top: 0px;
+}
+.taocan3 {
+
+
+	width: 150px;
+	position: absolute;
+	left: 338px;
+	top: 0px;
+}
+.fang_an {
+	background-image: url(images/gd-com_151.gif);
+	background-repeat: repeat-y;
+	padding-left: 10px;
+}
+.fang_an_nr {
+	padding-left: 120px;
+	background-image: url(images/gd-com_155.gif);
+	background-repeat: no-repeat;
+	height: 150px;
+	background-position: left center;
+}
+.fang_an_li {
+	padding: 1px;
+	width: 173px;
+	height: 19px;
+}
+.anli {
+	height: 140px;
+	width: 160px; margin:8px 0 0 4px;
+	text-align: center;
+	padding-top: 10px;
+}
+
+form{
+	margin:0px;
+	padding: 0px;
+	position: relative;
+}
+.input{border:1px solid #333333; }
+.input_pw{border:1px solid #333333; height:19px;}
+.img_sty{ cursor:hand;}
+.font_blue{ color:#0054A6}
+.font_red{ color:#FF0000;}
+.font_orange{ color:#F46523;}
+.font_song{font-family:'宋体';}
+.font_bold{ color:#003399; font-weight:bold}
+.font_bold_black{ color:#000000; font-weight:bold}
+.font_white{ color:#ffffff;}
+.font_green{ color:#348971;font-weight:bold;}
+.font_zise{ color:#662E91;font-weight:bold;font-size:14px; }
+.font_gay{ color:#666666;font-weight:bold;}
+
+
+.domain_li {
+	width: 68px;
+	height: 25px;
+}
+.domain_www {
+	text-align: center;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	
+}
+.box_1 {
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+	position: relative;
+	background-image: url(images/gd-com_64_l.gif);
+	background-repeat: repeat-y;
+	background-position: 763px;
+	height:1448px;*height:1463px;_height:1463px;
+}
+.yxt {
+	z-index: 999999999999999999999999;
+}
+.left1 {
+	width: 257px;
+	background-image: url(images/gd-com_17.gif);
+	float: left;
+	position: relative;
+	margin: 0px;
+}
+.right1 {
+	width: 600px;
+	float: right;
+	padding-right: 125px;
+}
+.sel {
+	padding: 19px;
+	background-image: url(images/gd-com_88.gif);
+	height: 20px;
+	text-align: center;
+}
+.zer-h{ height:27px;*height:27px;_height:23px;}
+
+
+
+.line-zer {
+	background-image: url(images/gd-com_24.gif);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	padding-top: 5px;*padding-top: 7px;_padding-top: 7px;
+	padding-bottom: 2px;
+	padding-left: 5px;
+	height: 18px;
+}

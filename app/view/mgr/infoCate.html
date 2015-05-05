@@ -1,0 +1,127 @@
+#{if $act=='' || $act=='index'}
+<div class="t"><a href="#{url c=$con a='toEdit'}">录入新分类</a><span>管理中心  - 分类列表</span></div>
+
+<div class="l">
+<tr><td colspan="6"></td></tr>
+<table cellspacing="1" cellpadding="3">
+<tr>
+<th width="40px">排序</th>
+<th>栏目名称</th>
+<th>查看子分类</th>
+<th width="60px">增加下级</th>
+<th width="60px">是否显示</th>
+<th width="30px">修改</th>
+<!--<th width="30px">删除</th>-->
+</tr>
+
+#{foreach key=key item=item from=$obs}
+
+<tr>
+<td width="40px"><input id="n_#{$item.id}" type="text" style="width: 40px;" value="#{$item.number}" onchange="cnumber('#{$item.id}', '#{$con}')"/></td>
+<td>#{$item.name}</td>
+<td><a href="#{url c=$con a='subcate' id=$item.id}">查看子分类</a></td>
+<td align="center">
+<img src="images/mgr/icon_add.gif" title="增加下级" onclick="url('#{url c=$con a='toLevel' ic_id=$item.id}')"/>
+</td>
+<td align="center">#{if $item.hidden == '0'}<font color="red">是</font>#{else}否#{/if}</td>
+<td>
+<img src="images/mgr/icon_edit.gif" title="编辑" onclick="url('#{url c=$con a='toEdit' id=$item.id}')"/>
+</td>
+<!--<td>
+<img src="images/mgr/icon_drop.gif" title="删除" onclick="isDelete('#{url c=$con a='del' id=$item.id}')"/>
+</td>-->
+</tr>
+
+#{/foreach}
+</table>
+</div>
+
+#{elseif $act=='toEdit'}
+<div class="t"><a href="#{url c=$con}">#{$title}列表</a><span>管理中心  - #{$title}编辑</span></div>
+<script type="text/javascript" src="lib/kindeditor/kindeditor.js"></script>
+<div class="e">
+<form action="#{url c=$con a='edit' id=$ob.id}" method="post">
+<table>
+<tr>
+<th>分类名：</th>
+<td><input name="name" style="width:300px;" value="#{$ob.name}"/></td>
+</tr>
+<tr>
+<th>是否显示：</th>
+<td>
+<select name="hidden">
+    <option value="0">是</option>
+    <option value="1">否</option>
+</select>
+</td>
+</tr>
+<tr><th>说明：</th><td colspan="2">#{editor value=$ob.other}</td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+#{elseif $act=='toLevel' || $act=='tolevelEdit'}
+<div class="t"><a href="#{url c=$con ic_id=$ic_id}">#{$title}列表</a><span>管理中心  - 编辑分类</span></div>
+<script type="text/javascript" src="lib/kindeditor/kindeditor.js"></script>
+<script type="text/javascript" src="js/calendar.js"></script>
+
+
+<form action="#{url c=$con a='del1'  ic_id=$smarty.get.id}" method="post" name="delForm">
+<div class="l">
+
+<table cellspacing="1" cellpadding="3">
+<tr>
+<th width="20px"><img src="images/mgr/icon_drop.gif" onclick="return delSub()"/></th>
+<th width="40px">排序</th>
+<th>分类名</th>
+<th width="60px">增加下级</th>
+<th width="40px">编辑</th>
+
+</tr>
+#{foreach key=key item=item from=$obs}
+<tr>
+<td align="center"><input type="checkbox" name="id[]" value="#{$item.id}"/></td>
+<td width="40px"><input id="n_#{$item.id}" type="text" style="width: 40px;" value="#{$item.number}" onchange="cnumber('#{$item.id}', '#{$con}')"/></td>
+<td>#{$item.name}</td>
+<td align="center">
+<img src="images/mgr/icon_add.gif" title="增加下级" onclick="url('#{url c=$con a='toLevel' ic_id=$item.id}')"/>
+</td>
+<td align="center">
+<img src="images/mgr/icon_edit.gif" title="编辑" onclick="url('#{url c=$con a='tolevelEdit' id=$item.id ic_id=$smarty.get.ic_id }')"/></td>
+
+</tr>
+#{/foreach}
+</table>
+<!--#{include file="mgr/common/mgr_pager.html"}-->
+</div>
+</form>
+
+<div class="e">
+<form action="#{url c=$con a='levelAdd' }" method="post" enctype="multipart/form-data">
+<input type="hidden" name="ids" value="#{$ob.id}"/>
+<input type="hidden" name="ic_id" value="#{$smarty.get.id}"/>
+<input type="hidden" name="p_ic_id" value="#{$smarty.get.ic_id}"/>
+<table>
+<tr>
+<th>分类名：</th>
+<td><input name="name" type="text" style="width: 400px;" value="#{$ob.name}"/></td>
+</tr>
+<tr><th>图片：</th><td><input type="file" name="photo" value="#{$ob.photo}"/></td></tr>
+<tr style="width: 50px; height: 50px;"><th>图片略缩图：</th><td><img src="#{if $ob.photo == 'default.jpg'}images/#{$ob.photo}#{else}app/upload/info/#{$ob.photo}#{/if}" width="50" height="50" /></td></tr>
+<tr><th>信息属性：</th><td>
+<select name="sort">
+<option value="1" #{if $ob.sort==1}selected#{/if}>文章</option>
+<option value="2" #{if $ob.sort==2}selected#{/if}>图片列表</option>
+<option value="3" #{if $ob.sort==3}selected#{/if}>文字列表</option>
+</select>
+</td></tr>
+<tr>
+<th>发布时间：</th>
+<td>#{calendar name='createtime' value=$ob.createtime}</td>
+</tr>
+<tr><td colspan="2">#{editor value=$ob.other}</td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+#{/if}

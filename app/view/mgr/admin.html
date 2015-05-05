@@ -1,0 +1,64 @@
+#{if $act=='toAdd'}
+<!-- 添加管理员 -->
+<div class="t"><a href="#{url c=$con}">管理员列表</a><span>管理中心  - 录入新管理员</span></div>
+
+<div class="e">
+<form action="#{url c=$con a='add'}" method="post">
+<table>
+<tr><th>登陆名:</th><td><input type="text" name="name" style="width: 150px;"/></td></tr> 
+<tr><th>登陆密码:</th><td><input type="password" name="pass" style="width: 150px;"/></td></tr>
+<tr><th>确认密码:</th><td><input type="password" name="rePass" style="width: 150px;"/></td></tr>
+</table>
+<div class="but">#{submit value='添加'} #{reset}</div>
+</form>
+</div>
+
+#{elseif $act=='index'||$act==''}
+
+<!-- 管理员列表 -->
+<div class="t"><a href="#{url c=$con a='toAdd'}">录入新管理员</a><span>管理中心  - 管理员列表</span></div>
+
+<form action="#{url c=$con a='del'}" method="post" name="delForm">
+<div class="l"> 
+<table cellspacing="1">
+<tr>
+<th width="20px"><img src="images/mgr/icon_drop.gif" onclick="return delSub()"/></th>
+<th>登陆名</th>
+<th>上次登陆时间</th>
+<th>上次登陆IP</th>
+<th>修改密码</th>
+</tr>
+#{foreach key=key item=item from=$ads}
+#{if $item.id==$smarty.session.adminSession.id}
+#{assign var='item' value=$smarty.session.adminSession}
+#{/if}
+<tr>
+<td align="center"><input type="checkbox" name="id[]" value="#{$item.id}"/></td>
+<td align="center">#{$item.name}</td>
+<td align="center">#{$item.lasttime}</td>
+<td align="center">#{$item.lastip}</td>
+<td align="center"><img src="images/mgr/icon_edit.gif" onclick="url('#{url c=$con a='toUpdatePass' id=$item.id}')"/></td>
+</tr>
+#{/foreach} 
+</table> 
+</div>
+</form>
+
+#{elseif $act=='toUpdatePass'}
+
+<div class="t"><a href="#{url c=$con}">管理员列表</a><span>管理中心  - 修改密码</span></div>
+
+<div class="e">
+<form action="#{url c=$con a='updatePass'}" method="post">
+<input type="hidden" name="id" value="#{$ob.id}"/>
+<table>
+<tr><th>登陆名:</th><td><input type="text" name="name" style="width: 150px;" value="#{$ob.name}" readonly="readonly"/></td></tr> 
+<tr><th>新密码:</th><td><input type="password" name="pass" style="width: 150px;"/></td></tr>
+<tr><th>确认密码:</th><td><input type="password" name="rePass" style="width: 150px;"/></td></tr>
+</table>
+<div class="but">#{submit value='添加'} #{reset}</div>
+</form>
+</div>
+
+
+#{/if}

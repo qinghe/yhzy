@@ -1,0 +1,27 @@
+#{if $act=='message'}
+<div class="t"><span class="t2">管理中心  - 意见反馈</span></div>
+<style>
+input{border: 1px solid #CCCCCC;width: 260px;}
+textarea{border: 1px solid #CCCCCC;}
+.sub{margin-top: 20px;}
+.sub input{width: 100px;}
+</style>
+<div class="tip">(提示：如果您对网站有什么问题，请在此处提交您的问题申请，我们会在第一时间对您的问题进行解决！)</div>
+<div class="list-div">
+
+<div style="width: 600px;margin-top: 20px;" align="center">
+<form action="http://www.dlphp.cn/index.php?action=messageAdd" method="post">
+<input type="hidden" name="fwd" value="#{$fwd}"/>
+<div>网站名称：<input type="text" name="company" value="#{$inis.title}"/></div>
+<div>姓<span style="margin-left: 24px;"></span>名：<input type="text" name="realname"/></div>
+<div>邮<span style="margin-left: 24px;"></span>箱：<input type="text" name="mail"/></div>
+<div>电<span style="margin-left: 24px;"></span>话：<input type="text" name="phone"/></div>
+<div>标<span style="margin-left: 24px;"></span>题：<input type="text" name="name"/></div>
+<div>内<span style="margin-left: 24px;"></span>容：<textarea rows="4" cols="30" name="other"></textarea></div>
+<div class="sub">#{submit value='提交留言'}</div>
+</form>
+</div>
+
+</div>
+
+#{/if}

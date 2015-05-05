@@ -1,0 +1,24 @@
+#{assign var='p' value=$smarty.get.p}
+#{assign var='id' value=$smarty.get.id}
+#{assign var='type' value=$smarty.get.type}
+#{assign var='sname' value=$smarty.get.sname}
+<div id="ziye">
+#{include file='main/common/left.html'}
+<div id="ziye_right">
+<div class="right_tit">搜索结果</div>
+<div class="caiwu_text">
+#{if $obs|@count eq 0 }
+<div align="center">没有找到搜索结果</div>
+#{/if}
+<ul class="ul4">
+#{foreach item=item from=$obs}
+<li><span style="float:right;">阅读#{if $num[$item.id]==NULL}0#{else}#{$num[$item.id]}#{/if}次</span><a href="#{url c=$con a='content' p=$item.p_ic_id ic_id=$item.ic_id id=$item.id}">#{$item.name}</a></li>
+#{/foreach}
+</ul>
+
+</div>
+<div class="fenye">#{include file='util/pager.html'}</div>
+
+</div>
+<div class="clear"></div>
+</div>

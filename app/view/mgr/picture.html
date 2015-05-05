@@ -1,0 +1,77 @@
+#{assign var='title' value='图片管理器'}
+#{assign var='ic_id' value=$smarty.get.ic_id}
+#{if $act=='' || $act=='index'}
+<div class="t"><a href="#{url c=$con a='toAdd' ic_id=$ic_id}">录入新#{$title}</a><span>管理中心  - #{$title}列表</span></div>
+
+<form action="#{url c=$con a='del' ic_id=$ic_id}" method="post" name="delForm">
+<input type="hidden" name="ic_id" value="#{$ic_id}"/>
+<div class="l"> 
+<table cellspacing="1" cellpadding="3"> 
+<tr>
+<th width="20px"><img src="images/mgr/icon_drop.gif" onclick="return delSub()"/></th>
+<th>名称</th>
+<th width="60px">图片替换</th>
+</tr>
+#{foreach key=key item=item from=$obs}
+#{if $item.ic_id == $ic_id }
+<tr>
+<td align="center"><input type="checkbox" name="id[]" value="#{$item.id}"/></td>
+<td><a href="#{url c='common' a='jipImg' pathf='images' path=$item.file}" name="#{$item.name}" id="p#{$item.id}" class="jTip">#{$item.name}</a></td>
+<td align="center"><img src="images/mgr/icon_edit.gif" title="图片替换" onclick="url('#{url c=$con a='toEdit' id=$item.id}')"/></td>
+</tr>
+#{/if}
+#{/foreach} 
+</table> 
+#{include file="mgr/common/mgr_pager.html"}
+</div>
+</form>
+
+#{elseif $act=='toEdit'}
+<div class="t"><a href="#{url c=$con}">#{$title}列表</a><span>管理中心  - #{$title}-替换图片</span></div>
+<script type="text/javascript" charset="utf-8" src="lib/kindeditor/kindeditor.js"></script>
+<div class="e">
+<form action="#{url c=$con a='edit'}" method="post" enctype="multipart/form-data">
+<input type="hidden" name="id" value="#{$ob.id}"/><input type="hidden" name="ic_id" value="#{$ob.ic_id}"/>
+<table>
+<!--<tr><th>#{$ob.name}：</th><td><img src="images/#{$ob.file}" width="100px" height="100px"/></td></tr>-->
+<tr><th>替换图片：</th><td><input type="file" name="photo"/></td></tr>
+<tr><th>详细内容：</th><td colspan="2">#{editor value=$ob.other}</td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+ 
+#{elseif $act=='toAdd'}
+#{if $ic_id==6||$ic_id==7}
+<script type="text/javascript" charset="utf-8" src="lib/kindeditor/kindeditor.js"></script>
+<div class="e">
+<form action="#{url c=$con a='add' }" method="post" enctype="multipart/form-data">
+<input type="hidden" name="id" value="#{$ob.id}"/>
+<table>
+<tr><th>名称：</th><td><input type="text" name="name"/></td></tr>
+<tr><th>类别：</th><td><select id="ic_id_sort" name="ic_id_sort">
+#{foreach key=key item=item from=$picSort}
+<option value="#{$item.id}">#{$item.name}</option>
+#{/foreach}
+</select></td></tr>
+<input type="hidden" name="ic_id" value="#{$ic_id}"/>
+<tr><th>图片：</th><td><input type="file" name="file1"/></td></tr>
+<tr><th>详细内容：</th><td colspan="2">#{editor value=$ob.other}</td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+#{else}
+<div class="t"><a href="#{url c=$con}">#{$title}列表</a><span>管理中心  - #{$title}-添加</span></div>
+
+<div class="e">
+<form action="#{url c=$con a='add'}" method="post">
+<table>
+<tr><th>昵称：</th><td><input type="text" name="name"/></td></tr>
+<tr><th>替换图片名：</th><td><input type="text" name="file"/></td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+#{/if}
+#{/if}

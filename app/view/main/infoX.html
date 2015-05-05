@@ -1,0 +1,126 @@
+#{assign var='p' value=$smarty.get.p}
+#{assign var='id' value=$smarty.get.id}
+#{assign var='type' value=$smarty.get.type}
+#{assign var='sname' value=$smarty.get.sname}
+<div id="ziye">
+#{include file='main/common/left.html'}
+<div id="ziye_right">
+<div class="right_tit">#{if $p==7 && $id==NULL}#{foreach item=item from=$topnav}#{if $item.id==$p}#{$item.name}#{/if}#{/foreach}#{elseif $p==7 && $id!=NULL}#{$lcatename.name}案例#{else}#{$lcatename.name}#{/if}</div>
+#{if $p==7 && $id==NULL}
+<div class="case_text">
+#{foreach item=item from=$casenav key=key}
+<div class="case_#{if $key==0}left#{else}right#{/if}">
+<div class="case_tit1"><div class="tit_left">#{$item.name}案例</div><div class="tit_right"><a href="#{url c=$con a='infoX' p=$item.p_id id=$item.id}" style="color:#000000;">更多>></a></div>
+<div class="clear"></div></div>
+<ul class="ul5">
+#{if $key==0}
+#{foreach item=item1 from=$case1}
+<li>
+<div class="ul5_left"><img src="app/upload/info/#{$item1.photo}" width="102" height="72" /></div>
+<div class="ul5_right">
+<div class="ul5_tit">#{$item1.name}</div>
+<div class="ul5_text">#{$item1.other|truncate:40}...<b><a href="#{url c=$con a='content' p=$item1.p_ic_id id=$item1.id}" style="color:#000000;">[更多]</a></b></div>
+</div>
+<div class="clear"></div>
+</li>
+#{/foreach}
+#{else}
+#{foreach item=item2 from=$case2}
+<li>
+<div class="ul5_left"><img src="app/upload/info/#{$item2.photo}" width="102" height="72" /></div>
+<div class="ul5_right">
+<div class="ul5_tit">#{$item2.name}</div>
+<div class="ul5_text">#{$item2.other|truncate:40}...<b><a href="#{url c=$con a='content' p=$item2.p_ic_id id=$item2.id}" style="color:#000000;">[更多]</a></b></div>
+</div>
+<div class="clear"></div>
+</li>
+#{/foreach}
+#{/if}
+</ul>
+
+</div>
+#{/foreach}
+<div class="clear"></div>
+
+</div>
+#{/if}
+#{if $lcatename.sort==1}
+<div class="gc_text">
+#{if $lcatename.id==111 || $lcatename.id==112}
+#{$lcatename.other}
+#{else}
+#{$gsjj7.other}
+#{/if}
+<div class="clear"></div>
+
+</div>
+#{elseif $lcatename.sort==2}
+#{if $p==7}
+<div class="case_text">
+<ul class="ul6">
+#{foreach item=item from=$obs}
+<li>
+<div class="ul6_left"><img src="app/upload/info/#{$item.photo}" width="102" height="72" /></div>
+<div class="ul6_right">
+<div class="ul6_tit">#{$item.name}</div>
+<div class="ul6_text">#{$item.other|truncate:120}...<b><a href="#{url c=$con a='content' p=$item.p_ic_id id=$item.id}" style="color:#000000;">[更多]</a></b></div>
+</div>
+<div class="clear"></div>
+</li>
+#{/foreach}
+</ul>
+
+<div class="clear"></div>
+
+</div>
+<div class="fenye">#{include file='util/pager.html'}</div>
+#{elseif $p==5}
+<div class="case_text">
+#{foreach item=item from=$obs}
+  <TABLE id="senfe" cellSpacing=0 cellPadding=0 width="430px" border=0>
+  <TBODY>
+
+  <TR>
+    <TD rowspan="4" align="center" style="width:156"><img src="app/upload/info/#{$item.photo}" width="156" height="100" /></TD>
+    <TD>招聘人数：</TD>
+    <TD>#{$item.person}</TD>
+    <TD>学历:</TD>
+    <TD colspan="2">#{$item.address}</TD>
+    </TR>
+	  <TR>
+	    <TD>工作经验：</TD>
+    <TD>#{$item.age}</TD>
+    <TD>性别：</TD>
+    <TD colspan="2">#{$item.mail}</TD>
+    </TR>
+	  <TR>
+	    <TD>工资待遇：</TD>
+    <TD>#{$item.wage}</TD>
+    <TD>结束时间：</TD>
+    <TD colspan="2">#{$item.deadline}</TD>
+    </TR>
+	  <TR>
+    <TD colspan="5">其他说明：#{$item.other|truncate:50}...</TD>
+    </TR>
+  </TBODY></TABLE>
+#{/foreach}
+<div class="clear"></div>
+
+</div>
+<div class="fenye">#{include file='util/pager.html'}</div>
+#{/if}
+#{elseif $lcatename.sort==3}
+<div class="caiwu_text">
+
+<ul class="ul4">
+#{foreach item=item from=$obs}
+<li><span style="float:right;">阅读#{if $num[$item.id]==NULL}0#{else}#{$num[$item.id]}#{/if}次</span><a href="#{url c=$con a='content' p=$item.p_ic_id ic_id=$item.ic_id id=$item.id}">#{$item.name}</a></li>
+#{/foreach}
+</ul>
+
+</div>
+<div class="fenye">#{include file='util/pager.html'}</div>
+#{/if}
+</div>
+<div class="clear"></div>
+</div>

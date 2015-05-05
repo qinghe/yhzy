@@ -1,0 +1,121 @@
+#{assign var='title' value=$ic.name}
+#{assign var='ic_id' value=$smarty.get.ic_id}
+#{if $act=='' || $act=='index'}
+<div class="t"><a href="#{url c=$con a='toEdit' ic_id=$ic_id}">录入新#{$title}</a><span>管理中心  - #{$title}列表</span></div>
+
+<div class="form-div">
+  <form action="index.php" method="get">
+  <input type="hidden" name="c" value="#{$con}"/>
+  <input type="hidden" name="ic_id" value="#{$ic_id}"/>
+    关键字 <input type="text" name="seaname" size="15" />
+    <input type="submit" value=" 搜索 " class="btn1" />
+  </form>
+</div>
+
+<form action="#{url c=$con a='del' ic_id=$ic_id}" method="post" name="delForm">
+<div class="l">
+<table cellspacing="1" cellpadding="3"> 
+<tr>
+<th width="20px"><img src="images/mgr/icon_drop.gif" onclick="return delSub()"/></th>
+<th width="40px">排序</th>
+<th>#{$title}标题</th>
+<th width="150px">发布时间</th>
+#{if $ic_id!='1'}
+<th width="30px">增加下级</th>
+#{/if}
+<th width="30px">编辑</th>
+</tr>
+#{foreach key=key item=item from=$obs}
+<tr>
+<td align="center"><input type="checkbox" name="id[]" value="#{$item.id}"/></td>
+<td width="40px"><input id="n_#{$item.id}" type="text" style="width: 40px;" value="#{$item.number}" onchange="cnumber('#{$item.id}', '#{$con}')"/></td>
+<td>#{$item.name}</td>
+<td align="center">#{$item.createtime|date_format:'%Y-%m-%d'}</td>
+#{if $ic_id!='1'}
+<td align="center">
+<img src="images/mgr/icon_add.gif" title="增加下级" onclick="url('#{url c=$con a='toLevel' ic_id=$ic_id id=$item.id}')"/>
+</td>
+#{/if}
+<td align="center">
+<img src="images/mgr/icon_edit.gif" title="编辑" onclick="url('#{url c=$con a='toEdit' ic_id=$ic_id id=$item.id}')"/></td>
+</tr>
+#{/foreach} 
+</table> 
+#{include file="mgr/common/mgr_pager.html"}
+</div>
+</form>
+
+#{elseif $act=='toEdit'}
+<div class="t"><a href="#{url c=$con ic_id=$ic_id}">#{$title}列表</a><span>管理中心  - 编辑#{$title}</span></div>
+<script type="text/javascript" src="lib/kindeditor/kindeditor.js"></script>
+<script type="text/javascript" src="js/calendar.js"></script>
+
+<div class="e">
+<form action="#{url c=$con a='edit' ic_id=$ic_id}" method="post" enctype="multipart/form-data">
+<input type="hidden" name="id" value="#{$ob.id}"/> 
+<table>
+<tr> 
+<th>#{$title}标题：</th> 
+<td><input name="name" type="text" style="width: 400px;" value="#{$ob.name}"/></td>
+</tr>
+<tr><th>照片：</th><td><input type="file" name="photo"/></td></tr>
+<tr>
+<th>发布时间：</th>
+<td>#{calendar name='createtime' value=$ob.createtime}</td>
+</tr>
+<tr><td colspan="2">#{editor value=$ob.other}</td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+
+#{elseif $act=='toLevel' || $act=='tolevelEdit'}
+<div class="t"><a href="#{url c=$con ic_id=$ic_id}">#{$title}列表</a><span>管理中心  - 编辑#{$title}</span></div>
+<script type="text/javascript" src="lib/kindeditor/kindeditor.js"></script>
+<script type="text/javascript" src="js/calendar.js"></script>
+
+
+<form action="#{url c=$con a='del'  ic_id=$smarty.get.ic_id}" method="post" name="delForm">
+<div class="l">
+<table cellspacing="1" cellpadding="3"> 
+<tr>
+<th width="20px"><img src="images/mgr/icon_drop.gif" onclick="return delSub()"/></th>
+<th width="40px">排序</th>
+<th>#{$title}标题</th>
+<th width="30px">编辑</th>
+</tr>
+#{foreach key=key item=item from=$obs}
+<tr>
+<td align="center"><input type="checkbox" name="id[]" value="#{$item.id}"/></td>
+<td width="40px"><input id="n_#{$item.id}" type="text" style="width: 40px;" value="#{$item.number}" onchange="cnumber1('#{$item.id}', '#{$con}')"/></td>
+<td>#{$item.name}</td>
+<td align="center">
+<img src="images/mgr/icon_edit.gif" title="编辑" onclick="url('#{url c=$con a='tolevelEdit' id=$smarty.get.id ic_id=$smarty.get.ic_id pid = $item.id}')"/></td>
+</tr>
+#{/foreach} 
+</table> 
+<!--#{include file="mgr/common/mgr_pager.html"}-->
+</div>
+</form>
+
+<div class="e">
+<form action="#{url c=$con a='levelAdd' }" method="post" enctype="multipart/form-data">
+<input type="hidden" name="ids" value="#{$ob.id}"/> 
+<input type="hidden" name="ic_id" value="#{$smarty.get.id}"/> 
+<input type="hidden" name="p_ic_id" value="#{$smarty.get.ic_id}"/> 
+<table>
+<tr> 
+<th>#{$title}标题：</th> 
+<td><input name="name" type="text" style="width: 400px;" value="#{$ob.name}"/></td>
+</tr>
+<tr>
+<th>发布时间：</th>
+<td>#{calendar name='createtime' value=$ob.createtime}</td>
+</tr>
+<!--<tr><td colspan="2">#{editor value=$ob.other}</td></tr>-->
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+
+#{/if}

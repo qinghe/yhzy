@@ -1,0 +1,66 @@
+#{assign var='act' value=$smarty.get.action}
+
+
+#{if $act==''||$act=='index'}
+#{include file='mgr/common/main_t.html' mt1="订单信息列表"}
+
+<div class="l"> 
+<table cellspacing="1" cellpadding="3"> 
+<tr>
+<th>订单号</th>
+<th>用户名</th>
+<th>收货人</th>
+<th>收货地址</th>
+<th>联系电话</th>
+<th>提交时间</th>
+<th width="60px">发货状态</th>
+<th width="60px">订单详细</th>
+</tr>
+#{foreach key=key item=item from=$obs}
+<tr>
+<td>#{$item.oi_no}</td>
+<td align="center">#{$item.us.us_name}</td>
+<td>#{$item.oi_name}</td>
+<td>#{$item.oi_address}</td>
+<td>#{$item.oi_phone}</td>
+<td align="center">#{$item.oi_createtime}</td>
+<td align="center">
+#{if $item.oi_state==1}
+已发货
+#{elseif $item.oi_state==0}
+<a href="index.php?controller=admOrder&action=state&id=#{$item.oi_id}">确认发货</a>
+#{/if}
+</td>
+<td align="center"><img src="images/mgr/icon_view.gif" style="cursor: pointer;" onclick="url('index.php?controller=admOrder&action=details&id=#{$item.oi_id}')"/></td>
+</tr>
+#{/foreach} 
+</table>
+#{include file="mgr/common/mgr_pager.html"}
+</div>
+
+#{elseif $act=='details'}
+
+#{include file='mgr/common/main_t.html' mt1="订单详细信息" mt2="订单信息列表" mt2_h="index.php?controller=admOrder"}
+
+<div align="center">
+<table width="600px" border="1">
+<tr height="30px"><td class="label">用户名</td><td>#{$oi.us.us_name}</td></tr>
+<tr><td class="label">订单号</td><td>#{$oi.oi_no}&nbsp;</td></tr>
+<tr><td class="label">收货人</td><td>#{$oi.oi_name}&nbsp;</td></tr>
+<tr height="30px"><td class="label">收货地址</td><td colspan="3">#{$oi.oi_address}&nbsp;</td></tr>
+<tr height="30px"><td class="label">联系电话</td><td>#{$oi.oi_phone}&nbsp;</td></tr>
+<tr height="30px"><td class="label">提交时间</td><td>#{$oi.oi_createtime}&nbsp;</td></tr>
+</table>
+
+
+
+<table border="1" width="600px">
+<tr height="30px"><th>商品名称</th><th>价格</th><th>订购数量</th></tr>
+#{foreach key=key item=item from=$oi.ogs}
+<tr height="30px"><td>#{$item.og_name}</td><td>#{$item.og_price}(元)</td><td>#{$item.og_amount}</td></tr>
+#{/foreach}
+</table>
+</div>
+
+
+#{/if}

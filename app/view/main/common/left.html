@@ -1,0 +1,71 @@
+#{assign var='p' value=$smarty.get.p}
+#{assign var='type' value=$smarty.get.type}
+#{assign var='id' value=$smarty.get.id}
+#{assign var='ic_id' value=$smarty.get.ic_id}
+#{assign var='fid' value=$smarty.get.fid}
+<div id="ziye_left">
+<div class="list1">
+<div class="list_tit">快速链接</div>
+<div class="list1_text">
+<ul class="ul2">
+#{foreach item=item from=$kslj1}
+#{if $item.id!=111}
+<li class="ql"><a href="#{url c=$con a='infoX' p=$item.p_id id=$item.id}">#{$item.name}</a></li>
+#{/if}
+#{/foreach}
+#{foreach item=item from=$kslj2}
+#{if $item.id!=112}
+<li class="sl"><a href="#{url c=$con a='infoX' p=$item.p_id id=$item.id}">#{$item.name}</a></li>
+#{/if}
+#{/foreach}
+</ul>
+</div>
+</div>
+#{if $p==2 || $p==3}
+#{if $id==111 || $id==112}
+<div class="list1">
+<div class="list_tit">#{$lcatename.name}经营项目</div>
+<div class="list1_text">
+<ul class="ul3">
+#{foreach item=item from=$obs}
+<li><a href="#{url c=$con a='content' p=$item.p_ic_id ic_id=$item.ic_id id=$item.id}">#{$item.name}</a></li>
+#{/foreach}
+</ul>
+</div>
+</div>
+#{elseif $a!='content'}
+<div class="list1">
+<div class="list_tit">#{$lcatename.name}公示板</div>
+<div class="list4_text" style="line-height:28px;margin:0 0 0 5px;">
+#{$lcatename.other}
+<span style="display:block; text-align:right"><a style="color:#000" href="#{url c=$con a='gsb' p=$p id=$id}">更多>></a></span>
+</div>
+
+</div>
+<div class="list1">
+<div class="list_tit">多慧推荐</div>
+<div class="list1_text">
+<ul class="ul3">
+#{foreach item=item from=$lefttj}
+<li><a href="#{url c=$con a='content' p=$item.p_ic_id ic_id=$item.ic_id id=$item.id}">#{$item.name}</a></li>
+#{/foreach}
+</ul>
+</div>
+</div>
+#{/if}
+#{/if}
+<div class="list1">
+<div class="list_tit">联系我们</div>
+<div class="list3_text">
+<div class="list_text4">
+咨询热线：#{$inis.tel}<br />
+公司注册咨询:#{$inis.zczx}<br />
+地 址:#{$inis.address}<br />
+传 真:#{$inis.fax}<br />
+Email:#{$inis.mail}
+</div>
+<div><a href="http://wpa.qq.com/msgrd?v=3&uin=#{$inis.qq1}&site=qq&menu=yes" target="_blank"><img src="images/qq.jpg" width="74" height="23" /></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://wpa.qq.com/msgrd?v=3&uin=#{$inis.qq2}&site=qq&menu=yes" target="_blank"><img src="images/qq.jpg" width="74" height="23" /></a></div>
+</div>
+
+</div>
+</div>

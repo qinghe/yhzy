@@ -1,0 +1,198 @@
+#{assign var='title' value=$smarty.get.ic_name}
+#{assign var='ic_id' value=$smarty.get.ic_id}
+#{assign var='p_ic_id' value=$smarty.get.p_ic_id}
+#{if $act=='' || $act=='index'}
+
+<div class="t"><a href="#{url c=$con a='toEdit' ic_id=$ic_id p_ic_id=$p_ic_id}">录入新#{$title}</a><span>管理中心  - #{$title}列表</span></div>
+<form action="#{url c=$con a='del' ic_id=$ic_id}" method="post" name="delForm">
+<div class="l">
+<table cellspacing="1" cellpadding="3"> 
+<tr>
+<th width="20px"><img src="images/mgr/icon_drop.gif" onclick="return delSub()"/></th>
+<th width="40px">排序</th>
+<th>#{$title}名称</th>
+#{if $ic_id==2}
+<th>类别</th>
+#{/if}
+<!--<th width="40px">推荐</th>-->
+<th width="40px">编辑</th>
+</tr>
+#{foreach name=name item=item from=$obs}
+<tr>
+<td align="center"><input type="checkbox" name="id[]" value="#{$item.id}"/></td>
+<td width="40px"><input id="n_#{$item.id}" type="text" style="width: 40px;" value="#{$item.number}" onchange="cnumber('#{$item.id}', '#{$con}')"/></td>
+<td align="center">#{$item.name}</td>
+#{if $ic_id==2}
+<td align="center">#{$item.ic.name}</td>
+#{/if}
+<!--<td align="center"><img id="up_#{$item.id}" src="images/mgr/#{if $item.up==0}no#{else}yes#{/if}.gif" onclick="cLogin('#{$item.id}', '#{$con}', 'up')"/></td>-->
+<td align="center"><img src="images/mgr/icon_edit.gif" title="编辑" onclick="url('#{url c=$con a='toEdit' id=$item.id ic_id=$item.ic_id}')"/></td>
+</tr>
+#{/foreach} 
+</table>
+#{include file="mgr/common/mgr_pager.html"}
+</div>
+</form>
+
+#{elseif $act=='toEdit'}
+<div class="t"><a href="#{url c=$con}">#{$title}列表</a><span>管理中心  - 编辑#{$title}</span></div>
+<script type="text/javascript" charset="utf-8" src="lib/kindeditor/kindeditor.js"></script>
+
+<div class="e">
+<form action="#{url c=$con a='edit' }" method="post" enctype="multipart/form-data">
+
+<table>
+#{if $ic_id=='36'}
+<input type="hidden" name="id" value="#{$ob.id}"/>
+<input type="hidden" name="ic_id" value="#{$ic_id}"/>
+<input type="hidden" name="p_ic_id" value="#{$p_ic_id}"/>
+<tr><th>名称：</th><td><input type="text" name="name" value="#{$ob.name}"/></td></tr>
+<tr><th>照片：</th><td><input type="file" name="photo"/></td></tr>
+<tr><th>位置：</th><td><select id="pos" name="pos">
+<option value="1">一星</option>
+<option value="2">二星</option>
+<option value="3">三星</option>
+<option value="4">四星</option>
+<option value="5">五星</option>
+</select>
+</td></tr>
+<script type="text/javascript">
+$("#pos option[value='#{$ob.pos}']").attr("selected", true);
+</script>
+<tr><th>停车位：</th><td><select id="stop" name="stop">
+<option value="1">一星</option>
+<option value="2">二星</option>
+<option value="3">三星</option>
+<option value="4">四星</option>
+<option value="5">五星</option>
+</select>
+</td></tr>
+<script type="text/javascript">
+$("#stop option[value='#{$ob.stop}']").attr("selected", true);
+</script>
+<tr><th>菜品：</th><td><select id="dish" name="dish">
+<option value="1">一星</option>
+<option value="2">二星</option>
+<option value="3">三星</option>
+<option value="4">四星</option>
+<option value="5">五星</option>
+</select>
+</td></tr>
+<script type="text/javascript">
+$("#dish option[value='#{$ob.dish}']").attr("selected", true);
+</script>
+<tr><th>服务：</th><td><select id="ser" name="ser">
+<option value="1">一星</option>
+<option value="2">二星</option>
+<option value="3">三星</option>
+<option value="4">四星</option>
+<option value="5">五星</option>
+</select>
+</td></tr>
+<script type="text/javascript">
+$("#ser option[value='#{$ob.ser}']").attr("selected", true);
+</script>
+<tr><th>价格：</th><td><select id="price" name="price">
+<option value="1">一星</option>
+<option value="2">二星</option>
+<option value="3">三星</option>
+<option value="4">四星</option>
+<option value="5">五星</option>
+</select>
+</td></tr>
+<script type="text/javascript">
+$("#price option[value='#{$ob.price}']").attr("selected", true);
+</script>
+<tr><th>卓位：</th><td><input id="seat" name="seat" value="#{$ob.seat}" /></td></tr>
+<tr><th>综合评定：</th><td><select id="alllevel" name="alllevel">
+<option value="1">一星</option>
+<option value="2">二星</option>
+<option value="3">三星</option>
+<option value="4">四星</option>
+<option value="5">五星</option>
+</select>
+</td></tr>
+<script type="text/javascript">
+$("#alllevel option[value='#{$ob.alllevel}']").attr("selected", true);
+</script>
+<tr><th>简介：</th><td colspan="2">#{editor value=$ob.other}</td></tr>
+#{elseif $ic_id=='56' || $ic_id=='55'}
+<input type="hidden" name="id" value="#{$ob.id}"/>
+<input type="hidden" name="ic_id" value="#{$ic_id}"/>
+<input type="hidden" name="p_ic_id" value="#{$p_ic_id}"/>
+<tr><th>名称：</th><td><input type="text" name="name" value="#{$ob.name}"/></td></tr>
+<tr><th>照片：</th><td><input type="file" name="photo"/></td></tr>
+
+<tr><th>简介：</th><td colspan="2">#{editor value=$ob.other}</td></tr>
+
+#{elseif $ic_id=='37'}
+
+<input type="hidden" name="id" value="#{$ob.id}"/>
+<input type="hidden" name="ic_id" value="#{$ic_id}"/>
+<input type="hidden" name="p_ic_id" value="#{$p_ic_id}"/>
+
+<tr><th>名称：</th><td><input type="text" name="name" value="#{$ob.name}"/></td></tr>
+<!--<tr><th>照片：</th><td><input type="file" name="photo"/></td></tr>-->
+<tr><th>类别：</th><td>
+<select id="ic_sort" name="ic_sort">
+#{foreach key=key item=item from=$inpc}
+<option value="#{$item.id}">#{$item.name}</option>
+#{/foreach}
+</select>
+</td></tr>
+<script type="text/javascript">
+$("#ic_sort option[value='#{$ob.ic_sort}']").attr("selected", true);
+</script>
+<tr><th>详细信息：</th><td colspan="2">#{editor value=$ob.other}</td></tr>
+
+
+
+#{elseif $ic_id=='43'}
+
+<input type="hidden" name="id" value="#{$ob.id}"/>
+<input type="hidden" name="ic_id" value="#{$ic_id}"/>
+<input type="hidden" name="p_ic_id" value="#{$p_ic_id}"/>
+
+<tr><th>名称：</th><td><input type="text" name="name" value="#{$ob.name}"/></td></tr>
+<tr><th>照片：</th><td><input type="file" name="photo"/></td></tr>
+<tr><th>类别：</th><td>
+<select id="ic_sort" name="ic_sort">
+#{foreach key=key item=item from=$inpci}
+<option value="#{$item.id}">#{$item.name}</option>
+#{/foreach}
+</select>
+</td></tr>
+<script type="text/javascript">
+$("#ic_sort option[value='#{$ob.ic_sort}']").attr("selected", true);
+</script>
+<tr><th>详细信息：</th><td colspan="2">#{editor value=$ob.other}</td></tr>
+
+
+#{elseif $ic_id=='65'}
+
+<input type="hidden" name="id" value="#{$ob.id}"/>
+<input type="hidden" name="ic_id" value="#{$ic_id}"/>
+<input type="hidden" name="p_ic_id" value="#{$p_ic_id}"/>
+<input type="hidden" name="sort" value="1"/>
+<tr><th>名称：</th><td><input type="text" name="name" value="#{$ob.name}"/></td></tr>
+<tr><th>视频：</th><td><input type="file" name="photo"/></td></tr>
+<tr><th>类别：</th><td>
+<select id="ic_sort" name="ic_sort">
+#{foreach key=key item=item from=$inpcip}
+<option value="#{$item.id}">#{$item.name}</option>
+#{/foreach}
+</select>
+</td></tr>
+<script type="text/javascript">
+$("#ic_sort option[value='#{$ob.ic_sort}']").attr("selected", true);
+</script>
+<tr><th>详细信息：</th><td colspan="2">#{editor value=$ob.other}</td></tr>
+
+
+#{/if}
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+
+#{/if}

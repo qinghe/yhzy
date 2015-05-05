@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* 基础标签固定样式 */
+html       { padding:0;}
+body       { margin:0 auto; background:#FFF url(bg.jpg); color:#000; font:12px SimSun,Arial;}
+div,form,img,ul,ol,li,dl,dt,dd {margin: 0; padding: 0; border: 0;}
+div,ul,ol,li,form { border:0; padding:0; margin:0 auto;}
+ol         { list-style-position: inside;              }
+ul         { list-style:none;                          }
+a          { color:#000; text-decoration: none         }
+a:hover	   { color:#000; text-decoration: underline }
+p          { margin:0px 0px 0 0px; padding:0;      }
+img	       { border-style: none; border:0; margin:0}
+h1, h2, h3, h4, h5, h6, h7{ margin:0; padding:0; font-weight: bold;}
+H7  { font-size:28px; color:#ff0000;}
+b, i, u    { font-weight: bold; border:0; display:block}
+b          { font-weight: bold;                        }
+u          { text-decoration: underline;               }
+br	       { clear:both;                               }
+.clear{clear:both}
+
+.dlhot{ background:url(d.gif) no-repeat; width:483px; height:290px; float:left; position:absolute; left:50%; top:50%; margin:-145px 0 0 -241px}
+.dlhot-nr{ width:230px; margin:100px 0 0 140px; display:inline; float:left;}
+.dlhot-nr input{ border:1px solid #716f64}
+.dlhot-nr ul li{ margin:9px auto 8px; display:inline; float:left}
+.dl{ float:left}
+.dl input{ float:left;margin:110px 0 0 0; display:inline; background:url(dl.jpg) no-repeat; width:62px; height:62px; cursor:pointer; border:none}
+.dlhot-di{ width:380px; margin:0 0 0 60px; display:inline; float:left; color:#FFF; position:relative; top:40px;}
+.dlhot-di span{ position:absolute; right:0}
+

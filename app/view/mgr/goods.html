@@ -1,0 +1,86 @@
+#{assign var='title' value='商品信息'}
+
+#{if $act=='' || $act=='index'}
+<div class="t"><a href="#{url c=$con a='toEdit'}">录入新#{$title}</a><span>管理中心  - #{$title}列表</span></div>
+
+<div class="form-div">
+<form action="index.php" method="get">
+<input type="hidden" name="c" value="#{$con}"/>
+所属类别：
+<select name="gc_idsea">
+<option>所有类别</option>
+#{foreach item=item1 from=$gcs}
+#{foreach item=item from=$item1.gcs}
+<option value="#{$item.id}">#{$item1.name}→#{$item.name}</option>
+#{/foreach}
+#{/foreach}
+</select>
+<input type="submit" value=" 搜索 " class="btn1" />
+</form>
+</div>
+
+<form action="#{url c=$con a='del'}" method="post" name="delForm">
+<div class="l"> 
+<table cellspacing="1" cellpadding="3"> 
+<tr>
+<th width="20px"><img src="images/mgr/icon_drop.gif" onclick="return delSub()"/></th>
+<th width="40px">排序</th>
+<th>所属类别</th>
+<th>商品名称</th>
+<th>商品型号</th>
+<th>单价</th>
+<th width="40px">下架</th>
+<th width="40px">推荐</th>
+<th width="40px">最新</th>
+<th width="40px">热门</th>
+<th width="40px">编辑</th>
+</tr>
+#{foreach key=key item=item from=$obs}
+<tr>
+<td align="center"><input type="checkbox" name="id[]" value="#{$item.id}"/></td>
+<td width="40px"><input id="n_#{$item.id}" type="text" style="width: 40px;" value="#{$item.number}" onchange="cnumber('#{$item.id}', '#{$con}')"/></td>
+<td>#{$item.gc.name}</td>
+<td><a href="#{url c='common' a='jipImg' type='goods' path=$item.photo}" name="#{$item.name}" id="p#{$item.id}" class="jTip">#{$item.name}</a></td>
+<td>#{$item.model}</td>
+<td>#{$item.price}(元)</td>
+<td align="center"><img id="ilock_#{$item.id}" src="images/mgr/#{if $item.ilock==0}no#{else}yes#{/if}.gif" onclick="cLogin('#{$item.id}', '#{$con}', 'ilock')"/></td>
+<td align="center"><img id="up_#{$item.id}" src="images/mgr/#{if $item.up==0}no#{else}yes#{/if}.gif" onclick="cLogin('#{$item.id}', '#{$con}', 'up')"/></td>
+<td align="center"><img id="new_#{$item.id}" src="images/mgr/#{if $item.new==0}no#{else}yes#{/if}.gif" onclick="cLogin('#{$item.id}', '#{$con}', 'new')"/></td>
+<td align="center"><img id="hot_#{$item.id}" src="images/mgr/#{if $item.hot==0}no#{else}yes#{/if}.gif" onclick="cLogin('#{$item.id}', '#{$con}', 'hot')"/></td>
+<td align="center"><img src="images/mgr/icon_edit.gif" title="编辑" onclick="url('#{url c=$con a='toEdit' id=$item.id}')"/></td>
+</tr>
+#{/foreach} 
+</table> 
+#{include file="mgr/common/mgr_pager.html"}
+</div>
+</form>
+
+#{elseif $act=='toEdit'}
+<div class="t"><a href="#{url c=$con}">#{$title}列表</a><span>管理中心  - #{$title}编辑</span></div>
+<script type="text/javascript" charset="utf-8" src="lib/kindeditor/kindeditor.js"></script>
+
+<div class="e">
+<form action="#{url c=$con a='edit'}" method="post" enctype="multipart/form-data">
+<input type="hidden" name="id" value="#{$ob.id}"/>
+<table>
+#{if $ob.photo!=''}<tr><td colspan="2"><img src="app/upload/goods/#{$ob.photo}" width="100px" height="100px"/></td></tr>#{/if}
+<tr><th>上传：</th><td><input type="file" name="photo"/></td></tr>
+<tr><th>名称：</th><td><input type="text" name="name" value="#{$ob.name}"/></td></tr>
+<tr><th>型号：</th><td><input type="text" name="model" value="#{$ob.model}"/></td></tr>
+<tr><th>单价：</th><td><input type="text" name="price" value="#{$ob.price}" style="width: 60px;"/>(元)</td></tr>
+<tr><th>类别：</th><td><select id="gc_id" name="gc_id">
+#{foreach key=key1 item=item1 from=$gcs}
+#{foreach key=key item=item from=$item1.gcs}
+<option value="#{$item.id}">#{$item1.name}→#{$item.name}</option>
+#{/foreach}
+#{/foreach}
+</select>
+</td></tr>
+<script type="text/javascript">$("#gc_id option[value='#{$ob.id}']").attr("selected", true);</script>
+<tr><td colspan="2">#{editor value=$ob.other}</td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+
+#{/if}

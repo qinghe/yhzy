@@ -1,0 +1,27 @@
+#{assign var='page_url' value='index.php?'}
+#{foreach key=key item=item from=$smarty.get}
+#{if $key!='page'}
+#{assign var='page_url' value="$page_url$key=$item&"}
+#{/if}
+#{/foreach}
+#{if ($pager.currentPageNumber != 1)}<a href="#{$page_url}page=#{$pager.firstPage}">首页</a>&nbsp;<a href="#{$page_url}page=#{$pager.prevPage}">上一页</a>#{else}<a>首页</a>&nbsp;<a>上一页</a>#{/if}&nbsp;#{if $pager.currentPageNumber != $pager.pageCount}<a href="#{$page_url}page=#{$pager.nextPage}">下一页</a>&nbsp;<a href="#{$page_url}page=#{$pager.lastPage}">尾页</a>#{else}<a>下一页</a>&nbsp;<a>尾页</a>#{/if}&nbsp;<a>页数#{$pager.currentPageNumber}/#{$pager.pageCount}</a>
+
+
+<div>
+<script type="text/javascript">
+function cpage(p){
+	location.href='#{$page_url}page='+p;
+}
+</script>
+<!--<select id="page" name="page" onchange="cpage(this.value)">
+#{section name=loop loop=$pager.pageCount}
+<option value="#{$smarty.section.loop.index}">#{$smarty.section.loop.index+1}</option>
+#{/section} 
+</select>
+
+<script type="text/javascript">
+$("#page option[value='#{$smarty.get.page}']").attr("selected", true);
+</script>
+-->
+
+</div>

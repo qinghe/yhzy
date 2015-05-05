@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<link href="css/menu.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="tabbar-div"><p><span id="menu1" class="tab-front" onClick="cmenu('1')">管理</span><span id="menu2" class="tab-back" onClick="cmenu('2')">帮助</span></p></div>
+
+<div id="main-div">
+<div id="menu-list">
+<ul>
+<li class="explode">
+网站设置
+<ul>
+<li class="menu-item"><a href="#{url c='admIndex'}" target="main-frame">系统主页</a></li>
+<li class="menu-item"><a href="#{url c='admConfig'}" target="main-frame">参数设置</a></li>
+<li class="menu-item"><a href="#{url c='admPhoto'}" target="main-frame">幻灯片</a></li>
+<li class="menu-item"><a href="#{url c='admMessage'}" target="main-frame">加入</a></li>
+<li class="menu-item"><a href="#{url c='admMessage' a='lianxi'}" target="main-frame">联系</a></li>
+<li class="menu-item"><a href="#{url c='admUrl'}" target="main-frame">友情链接</a></li>
+
+<!--li class="menu-item"><a href="#{url c='admBaoming'}" target="main-frame">简历</a></li>
+<<li class="menu-item"><a href="#{url c='admPicture'}" target="main-frame">图片管理器</a></li>>
+<li class="menu-item"><a href="#{url c='admMessage'}" target="main-frame">留言版</a></li-->
+</ul>
+</li>
+<li class="explode">
+网站内容管理
+<ul>
+<li class="menu-item"><a href="#{url c='admInfoCate'}" target="main-frame">目录</a></li>
+<!--li class="menu-item"><a href="#{url c='admInfoCate1'}" target="main-frame">主营产品</a></li-->
+#{foreach item=item from=$cper}
+<li class="explode">
+#{$item.name}
+<ul>
+#{foreach item=item1 name=name1 from=$cper1}
+#{if $item.id==$item1.p_id}
+
+	<li class="menu-item"><a href="#{url c='admshowmess'  ic_id=$item1.id p_ic_id=$item.id ic_name=$item1.name}" target="main-frame">#{$item1.name}</a></li>
+
+#{/if}
+#{/foreach}
+</ul>
+</li>
+#{/foreach}
+
+
+#{foreach item=item from=$infotitle}
+<li class="explode">
+#{$item.name}
+<ul>
+#{foreach item=item1 name=name1 from=$infoall}
+#{if $item.id==$item1.p_id}
+
+	<li class="menu-item"><a href="#{url c='admshowmess'  ic_id=$item1.id p_ic_id=$item.id ic_name=$item1.name}" target="main-frame">#{$item1.name}</a></li>
+
+#{/if}
+#{/foreach}
+</ul>
+</li>
+#{/foreach}
+
+<!--li class="menu-item"><a href="#{url c='admMessage'}" target="main-frame">留言</a></li>
+<li class="menu-item"><a href="#{url c='admPhoto'}" target="main-frame">幻灯片</a></li>
+<li class="menu-item"><a href="#{url c='admPhoto1'}" target="main-frame">员工生活幻灯片</a></li-->
+#{*#{foreach item=item from=$fengcai5}
+<li class="menu-item"><a href="#{url c='admshowmess'  ic_id=$item.id p_ic_id=5 ic_name=$item.name}" target="main-frame">#{$item.name}</a></li>
+#{/foreach}
+*}
+
+
+#{*
+<li class="menu-item"><a href="#{url c='admMessage' ic_id=1}" target="main-frame">在线订单</a></li>
+
+<li class="menu-item"><a href="#{url c='admInfoC' ic_id=5}" target="main-frame">人力资源</a></li>
+
+<li class="menu-item"><a href="#{url c='admMessage' ic_id=2}" target="main-frame">自我推荐</a></li>
+
+
+<li class="menu-item"><a href="#{url c='admInfoC' ic_id=6}" target="main-frame">营销网络</a></li>
+<li class="menu-item"><a href="#{url c='admContact' ic_id=1}" target="main-frame">联系我们</a></li>
+
+<li class="menu-item"><a href="#{url c='admInfoC' ic_id=7}" target="main-frame">连锁加盟</a></li>
+
+
+<li class="menu-item"><a href="#{url c='admContact' ic_id=1}" target="main-frame">联系永恒</a></li>
+
+<li class="menu-item"><a href="#{url c='admPhotoCate'}" target="main-frame">新闻分类</a></li>
+<li class="menu-item"><a href="#{url c='admPhoto'}" target="main-frame">新闻内容</a></li>
+<li class="menu-item"><a href="#{url c='admMain' ic_id=1}" target="main-frame">总经理致辞</a></li>
+<li class="menu-item"><a href="#{url c='admInfoC' ic_id=3}" target="main-frame">设计团队</a></li>
+<li class="menu-item"><a href="#{url c='admPicture' ic_id=7}" target="main-frame">团队图片</a></li>
+<li class="menu-item"><a href="#{url c='admMain' ic_id=2}" target="main-frame">健洲网络</a></li>
+<li class="menu-item"><a href="#{url c='admInfoC' ic_id=4}" target="main-frame">公司新闻</a></li>
+<li class="menu-item"><a href="#{url c='admExample' ec_id=1}" target="main-frame">企业招聘</a></li>
+
+*}
+<!--<li class="menu-item"><a href="#{url c='admInfoC' ic_id=5}" target="main-frame">人力资源</a></li>
+<li class="menu-item"><a href="#{url c='admMain' id=101}" target="main-frame">首页集团概况</a></li>
+<li class="menu-item"><a href="#{url c='admUrl'}" target="main-frame">友情链接</a></li>-->
+</ul>
+</li>
+<!--<li class="explode">
+投资者关系
+<ul>-->
+
+<!--<li class="menu-item"><a href="#{url c='admMain' ic_id=2}" target="main-frame">股票报价</a></li>
+<li class="menu-item"><a href="#{url c='admMain' ic_id=3}" target="main-frame">电话会议</a></li>
+<li class="menu-item"><a href="#{url c='admMain' ic_id=4}" target="main-frame">财务报表</a></li>
+<li class="menu-item"><a href="#{url c='admMain' ic_id=5}" target="main-frame">主要财务数据</a></li>
+<li class="menu-item"><a href="#{url c='admMain' ic_id=6}" target="main-frame">美国证监会备案文档</a></li>
+<li class="menu-item"><a href="#{url c='admMain' ic_id=7}" target="main-frame">投资者演示文档</a></li>-->
+<!--<li class="menu-item"><a href="#{url c='admMain' id=8}" target="main-frame">分析师信息</a></li>
+<li class="menu-item"><a href="#{url c='admMain' id=9}" target="main-frame">常见问题</a></li>
+<li class="menu-item"><a href="#{url c='admMain' id=10}" target="main-frame">联系投资者关系部</a></li>
+<li class="menu-item"><a href="#{url c='admMain' id=11}" target="main-frame">职业规范</a></li>
+<li class="menu-item"><a href="#{url c='admMain' id=12}" target="main-frame">风险提示</a></li>-->
+<!--</ul>
+</li>-->
+<!--<li class="explode">
+会员专区
+<ul>
+<li class="menu-item"><a href="#{url c='admUser'}" target="main-frame">会员管理</a></li>
+<li class="menu-item"><a href="#{url c='admJianbao'}" target="main-frame">项目简报</a></li>
+<li class="menu-item"><a href="#{url c='admFile'}" target="main-frame">集团内刊</a></li>
+</ul>
+</li>
+--><li class="explode">
+管理员管理
+<ul>
+<li class="menu-item"><a href="#{url c='admAdmin'}" target="main-frame">管理员列表</a></li>
+<li class="menu-item"><a href="#{url c='admAdmin' a='toAdd'}" target="main-frame">添加管理员</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div id="menu-list2" style="display: none;">
+<ul>
+<li class="explode">
+后台使用说明
+<ul>
+<li class="menu-item"><a href="#{url c='admHelp' a='ward'}" target="main-frame">注意事项</a></li>
+</ul>
+</li>
+<li class="explode">
+系统维护
+<ul>
+<li class="menu-item"><a href="#{url c='admHelp' a='backUpTo'}" target="main-frame">数据库备份</a></li>
+<li class="menu-item"><a href="lib/adminer.php" target="main-frame" style="color: red;">数据库管理</a></li>
+<li class="menu-item"><a href="#{url c='admHelp' a='upload'}" target="main-frame">清理上传文件</a></li>
+</ul>
+</li>
+<li class="explode">
+客户服务
+<ul>
+<li class="menu-item"><a href="#{url c='admHelp' a='message'}" target="main-frame">意见反馈</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
+</body>
+</html>

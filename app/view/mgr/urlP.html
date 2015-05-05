@@ -1,0 +1,43 @@
+#{assign var='title' value='友情链接'}
+
+#{if $act=='' || $act=='index'}
+<div class="t"><a href="#{url c=$con a='toEdit'}">添加#{$title}</a><span>管理中心  - #{$title}列表</span></div>
+
+<form action="#{url c=$con a='del'}" method="post" name="delForm">
+<div class="l"> 
+<table cellspacing="1" cellpadding="3"> 
+<tr>
+<th width="20px"><img src="images/mgr/icon_drop.gif" onclick="return delSub()"/></th>
+<th>#{$title}名称</th>
+<th width="150px">网址</th>
+<th width="30px">编辑</th>
+</tr>
+#{foreach key=key item=item from=$obs}
+<tr>
+<td align="center"><input type="checkbox" name="id[]" value="#{$item.id}"/></td>
+<td><a href="#{url c='common' a='jipImg' type='urlP' path=$item.photo}" name="#{$item.name}" id="p#{$item.id}" class="jTip">#{$item.name}</a></td>
+<td align="center">#{$item.url}</td>
+<td align="center"><img src="images/mgr/icon_edit.gif" title="编辑" onclick="url('#{url c=$con a='toEdit' id=$item.id}')"/></td>
+</tr>
+#{/foreach} 
+</table> 
+#{include file="mgr/common/mgr_pager.html"}
+</div>
+</form>
+
+#{elseif $act=='toEdit'}
+<div class="t"><a href="#{url c=$con}">#{$title}列表</a><span>管理中心  - 编辑#{$title}</span></div>
+
+<div class="e">
+<form action="#{url c=$con a='edit'}" method="post" enctype="multipart/form-data">
+<input type="hidden" name="id" value="#{$ob.id}"/>
+<table>
+<tr><th>#{$title}名称：</th><td><input name="name" type="text" style="width: 400px;" value="#{$ob.name}"/></td></tr>
+<tr><th>图片(图片没有修改无须重新上传)：</th><td><input type="file" name="photo"/></td></tr>
+<tr><th>网址：</th><td><input type="text" name="url" value="#{$ob.url}"/></td></tr>
+</table>
+<div class="but">#{submit} #{reset}</div>
+</form>
+</div>
+
+#{/if}

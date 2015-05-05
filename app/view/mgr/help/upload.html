@@ -1,0 +1,26 @@
+#{if $act=='upload'}
+<div class="t"><span class="t2">管理中心  - 清理上传文件</span></div>
+
+<div class="tip">(提示：没有特殊情况无需执行该操作，文件删除后将无法找回，请确认后再删除！)</div>
+<div class="list-div"> 
+<table cellspacing="1" cellpadding="3" style="font-size: 12px;">
+<tr>
+<th>文件名称</th>
+<th>文件格式</th>
+<th>文件大小</th>
+<th>查看文件</th>
+<th>删除</th>
+</tr>
+#{foreach key=key item=item from=$fis}
+<tr>
+<td align="center">#{$item.name}</td>
+<td align="center">#{$item.type}</td>
+<td align="center">#{$item.size}</td>
+<td align="center"><a href="lib/kindeditor/attached/#{$item.fulname}" target="_blank"><img src="images/mgr/icon_view.gif"/></a></td>
+<td align="center"><img src="images/mgr/icon_drop.gif" title="删除" onclick="isDelete('#{url c=$con a='uploadDel' fulname=$item.fulname}')"/></td>
+</tr>
+#{/foreach}
+</table>
+</div>
+
+#{/if}

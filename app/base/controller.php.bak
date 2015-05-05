@@ -1,0 +1,45 @@
+<?php
+class base_controller extends FLEA_Controller_Action {
+	
+	var $smarty;
+	
+	function base_controller() {
+		$this->smarty = &$this->_getView ();
+		
+		$smess=get_model('infoCate');
+		$this->s_assign('infoall',$smess->findAll(NULL,'number asc'));
+		$infoc=get_model('infoCate');
+		$infotitle = $infoc->findAll(array('p_id'=>'x'),'number asc');		
+		$this->s_assign('infotitle',$infotitle);	
+		
+	}
+	
+	/**
+	 * smarty简写
+	 */
+	function s_display($tpl) {
+		$this->smarty->display ( $tpl );
+	}
+	function s_assign($key, $value) {
+		$this->smarty->assign ( $key, $value );
+	}
+	
+	/* ---------------------SOA-------------------- */
+	/**
+	 * 基于FLEA公共分页
+	 * 
+	 * @param $dao 数据对象
+	 * @param $para = null
+	 * @param $sortby = null
+	 * @param $pageSize = 20
+	 * @param $reobj = 'obs'
+	 */
+	function set_pager($dao, $para = null, $sortby = null, $pageSize = 10, $reobj = 'obs') {
+		$page = isset ( $_REQUEST ['page'] ) ? ( int ) $_REQUEST ['page'] : 0;
+		FLEA::loadClass ( 'FLEA_Helper_Pager' );
+		$pager = new FLEA_Helper_Pager ( $dao, $page, $pageSize, $para, $sortby );
+		$this->s_assign ( $reobj, $pager->findAll () );
+		$this->s_assign ( 'pager', $pager->getPagerData ( FALSE ) );
+	}
+}
+?>
