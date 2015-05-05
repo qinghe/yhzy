@@ -16,6 +16,7 @@
  <script src="js/jquery.nivo.slider.pack.js"></script> 
  <script src="js/jquery.scrollTo-min.js"></script> 
  <script src="js/zoombox.js"></script> 
+ <script src="js/jquery.menuhover.js"></script> 
  <script src='js/main.js'></script>
 </head>
 
@@ -34,14 +35,20 @@
     <nav id="menu"><ul>
      <li class="current"><a href="#">首 页</a></li>
      <li><a href="#about">我 们</a></li>
-     <li><a href="#portfolio">案 例</a></li>
+     <li class="product_categories"><a href="#portfolio">案 例</a>         
+
+     </li>
      <li><a href="#features">动 态</a></li> 
      <li><a href="#join">加 入</a></li>  
      <li><a href="#contact">联 系</a></li>          
     </ul></nav>
    </div>	
   </header>
-  
+           <ul class="product_categories" style=" ">
+           #{foreach item=item from=$product_categories}
+             <li><a href="/?c=category&ic_id=#{$item.id}">#{$item.name}</a></li>  
+           #{/foreach}
+          </ul>
   <!-- Home section -->
   <section id="home">
    <!-- Change slider images here -->

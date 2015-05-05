@@ -1,3 +1,7 @@
+// 线程 IDs
+var mouseover_tid = [];
+var mouseout_tid = [];
+
 var J = jQuery.noConflict();
 
 J(window).load(function() {
@@ -124,5 +128,23 @@ J(document).ready(function() {
         autoplay : false                // Autoplay for video
    });
    
+   J('li.product_categories').each(function(index, element){
+       var hover = J('ul.product_categories');
+       var $self = J(element);
+       $self.menuhover({
+           activate: function(){
+               var top  = $self.offset().top +20;
+               var left = $self.offset().left - hover.width()/2; 
+               hover.css({left:left, top: top}).show(); 
+           },
+           deactivate: function(){ 
+               hover.hide(); 
+               },
+           submenuDirection: 'b',
+           $hover: hover
+       });
+   });
 	
 });
+
+

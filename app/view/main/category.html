@@ -1,23 +1,69 @@
 <!doctype html>
-<html lang="en">
-<!-- Added by HTTrack --><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><!-- /Added by HTTrack -->
-<style type="text/css">
-h1,h2,h3,h4,h5,h6 {
-	font-family: RomeralRegular;
-}
-</style>
-<head>
+<html lang="en"><head>
  <meta charset="utf-8">
+ <title>#{if $title==NULL}#{$inis.title}#{else}#{$title}#{/if}</title>
+ <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon" />
+ 
  
  <!-- CSS -->
+ <link rel="stylesheet" href="css/normalize.css">
  <link rel="stylesheet" href="css/style.css"> 
-
+ <link rel="stylesheet" href="css/nivo-slider.css"> 
+ <link rel="stylesheet" href="css/validation.css">   
+ <!-- Jquery magic -->
+ <script src="js/jquery-1.6.4.min.js"></script> 
+ <script src="js/jquery.easing.1.3.js"></script>
+ <script src="js/jquery.nivo.slider.pack.js"></script> 
+ <script src="js/jquery.scrollTo-min.js"></script> 
+ <script src="js/zoombox.js"></script> 
+ <script src="js/jquery.menuhover.js"></script> 
+ <script src='js/main.js'></script>
 </head>
 
 <body>
-<div class="man">
-  <div style="padding:10px;">
-	products
-  </div>
+
+  <!-- Show loading gif image while page loads -->
+  <div class="loading"></div>
+  
+  <!-- Top dark bar -->
+  <header id="banner">
+   <div class="center-wrap">
+    <div id="logo">
+     <h1><a href="/"><img src="images/logo.png" alt="Kallan" /></a></h1>
+    </div>
+  
+    <nav id="menu"><ul>
+     <li class="current"><a href="/">首 页</a></li>
+     <li><a href="/#about">我 们</a></li>
+     <li class="product_categories"><a href="#portfolio">案 例</a>         
+
+     </li>
+     <li><a href="/#features">动 态</a></li> 
+     <li><a href="/#join">加 入</a></li>  
+     <li><a href="/#contact">联 系</a></li>          
+    </ul></nav>
+   </div>   
+  </header>
+           <ul class="product_categories" style=" ">
+           #{foreach item=item from=$categories}
+             <li><a href="/?c=category&ic_id=#{$item.id}">#{$item.name}</a></li>  
+           #{/foreach}
+          </ul>
+  <section>
+      <ul class="portHolder">
+            #{foreach item=item from=$products}
+              <li class="port">
+               <a href="index.php?c=default&a=content&id=#{$item.id}" class="zoomboxP">
+                <img src="app/upload/info/#{$item.photo}" alt="item3" style="width:185px;height:126px;" />
+                <div class="zoomHomeP">
+                 <img src="images/121.png" alt="zoom icon" />
+                </div>
+               </a>
+              </li> 
+             #{/foreach}
+         </ul>
+
+  </section>
+
 </body>
 </html>

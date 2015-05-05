@@ -28,6 +28,9 @@ class controller_default extends base_mai_controller {
 		$this->s_assign('lj' , $url->findAll(array(),"id desc"),4);
 		$this->s_assign('dt1' , $main->findAll(array("p_ic_id"=>1,"ic_id"=>4,'hot'=>1),"id desc",3));
 		$this->s_assign('dt' , $main->findAll(array("p_ic_id"=>1,"ic_id"=>4),"id desc"));
+        
+        $this->s_assign('product_categories' , $cmain->findAll(array("p_id"=>11),"id desc"));
+
 		$conf=get_model('config');
 		$this->s_assign('config', $conf->findAll());
 		

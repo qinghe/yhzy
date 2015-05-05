@@ -1072,3 +1072,17 @@ a.zoombox {
 	font-size:12px !important;
 	font-weight: bold;
 }
+
+ul.product_categories{
+    display: none; 
+    position: absolute;
+    background-color:yellow; 
+    
+    list-style:none;
+}
+ul.product_categories li{
+    display:inline-block;
+}
+ul.product_categories a{
+    color:green;
+}
