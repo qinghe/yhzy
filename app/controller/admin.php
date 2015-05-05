@@ -22,8 +22,8 @@ class controller_admin extends base_controller {
 		$imgcode = FLEA::getSingleton ( 'FLEA_Helper_ImgCode' );
 		if (empty ( $_POST ['name'] ) || empty ( $_POST ['pass'] ))
 			js_alert ( '用户名密码不能为空', '', $this->_url () );
-		elseif (! $imgcode->check ( $_POST ['imgcode'] ))
-			js_alert ( '验证码不正确', '', $this->_url () );
+		//elseif (! $imgcode->check ( $_POST ['imgcode'] ))
+		//	js_alert ( '验证码不正确', '', $this->_url () );
 		else {
 			$admin = $this->dao->find ( array ('name' => $_POST ['name'], 'pass' => md5 ( $_POST ['pass'] )) );
 			if ($admin == NULL)

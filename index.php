@@ -32,7 +32,7 @@ FLEA::loadAppInf(
 //FLEA::setAppInf('urlMode', URL_REWRITE);
 FLEA::setAppInf('controllerAccessor', 'c');
 FLEA::setAppInf('actionAccessor', 'a');
-FLEA::setAppInf('logEnabled', false);//关闭日志记录
+FLEA::setAppInf('logEnabled', true);//关闭日志记录
 FLEA::loadAppInf(APP.'config/smarty_config.php');
 FLEA::import(APP);
 FLEA::init();
