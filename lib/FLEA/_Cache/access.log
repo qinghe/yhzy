@@ -1,0 +1,249 @@
+[2015-05-05 17:32:41 0.13942700] ======= FleaPHP Loaded =======
+[2015-05-05 17:32:41] REQUEST_URI: /index.php?page=0
+[2015-05-05 17:32:41] [debug] :sql: SELECT VERSION()
+[2015-05-05 17:32:41] [debug] :sql: SET NAMES 'utf8'
+[2015-05-05 17:32:41] [debug] :sql: SHOW FULL COLUMNS FROM `my_info_cate`
+[2015-05-05 17:32:41] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`   ORDER BY number asc
+[2015-05-05 17:32:41] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('1','2','3','4','5','6','7','8','9','10','11','12','13')
+[2015-05-05 17:32:41] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` = 'x' AND `my_info_cate`.`hidden` = '0'  ORDER BY number asc
+[2015-05-05 17:32:41] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('1','11')
+[2015-05-05 17:32:41] [debug] :sql: SHOW FULL COLUMNS FROM `my_config`
+[2015-05-05 17:32:41] [debug] :sql: SELECT  `my_config`.* FROM `my_config`  
+[2015-05-05 17:32:41] [debug] :sql: SHOW FULL COLUMNS FROM `my_photo`
+[2015-05-05 17:32:41] [debug] :sql: SHOW FULL COLUMNS FROM `my_url`
+[2015-05-05 17:32:41] [debug] :sql: SHOW FULL COLUMNS FROM `my_showmess`
+[2015-05-05 17:32:41] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 2  LIMIT 1
+[2015-05-05 17:32:41] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('2')
+[2015-05-05 17:32:41] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 3  LIMIT 1
+[2015-05-05 17:32:41] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('3')
+[2015-05-05 17:32:41] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 4  LIMIT 1
+[2015-05-05 17:32:41] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('4')
+[2015-05-05 17:32:41] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 5  LIMIT 1
+[2015-05-05 17:32:41] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('5')
+[2015-05-05 17:32:41] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 6  LIMIT 1
+[2015-05-05 17:32:41] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('6')
+[2015-05-05 17:32:41] [debug] :sql: SELECT  `my_photo`.`id` AS flea_pkref_id, `my_photo`.* FROM `my_photo`   ORDER BY number desc LIMIT 4
+[2015-05-05 17:32:41] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 2  ORDER BY id asc LIMIT 1
+[2015-05-05 17:32:41] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:32:41] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:32:41] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 2  ORDER BY id desc LIMIT 1
+[2015-05-05 17:32:41] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:32:41] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:32:41] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 3  ORDER BY id desc
+[2015-05-05 17:32:41] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:32:41] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:32:41] [debug] :sql: SELECT COUNT(`my_showmess`.`id`) FROM `my_showmess` WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 3
+[2015-05-05 17:32:41] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 3  ORDER BY number desc,id desc LIMIT 0, 12
+[2015-05-05 17:32:41] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:32:41] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:32:41] [debug] :sql: SELECT  `my_url`.* FROM `my_url`   ORDER BY id desc
+[2015-05-05 17:32:41] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 4 AND `my_showmess`.`hot` = 1  ORDER BY id desc LIMIT 3
+[2015-05-05 17:32:41] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 4  ORDER BY id desc
+[2015-05-05 17:32:41] [debug] :sql: SELECT  `my_config`.* FROM `my_config`  
+[2015-05-05 17:32:41 0.26570800] ======= FleaPHP End (elapsed: 0.126281 seconds) =======
+
+[2015-05-05 17:32:44 0.48255500] ======= FleaPHP Loaded =======
+[2015-05-05 17:32:44] REQUEST_URI: /index.php?page=0
+[2015-05-05 17:32:44] [debug] :sql: SELECT VERSION()
+[2015-05-05 17:32:44] [debug] :sql: SET NAMES 'utf8'
+[2015-05-05 17:32:44] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`   ORDER BY number asc
+[2015-05-05 17:32:44] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('1','2','3','4','5','6','7','8','9','10','11','12','13')
+[2015-05-05 17:32:44] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` = 'x' AND `my_info_cate`.`hidden` = '0'  ORDER BY number asc
+[2015-05-05 17:32:44] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('1','11')
+[2015-05-05 17:32:44] [debug] :sql: SELECT  `my_config`.* FROM `my_config`  
+[2015-05-05 17:32:44] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 2  LIMIT 1
+[2015-05-05 17:32:44] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('2')
+[2015-05-05 17:32:44] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 3  LIMIT 1
+[2015-05-05 17:32:44] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('3')
+[2015-05-05 17:32:44] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 4  LIMIT 1
+[2015-05-05 17:32:44] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('4')
+[2015-05-05 17:32:44] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 5  LIMIT 1
+[2015-05-05 17:32:44] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('5')
+[2015-05-05 17:32:44] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 6  LIMIT 1
+[2015-05-05 17:32:44] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('6')
+[2015-05-05 17:32:44] [debug] :sql: SELECT  `my_photo`.`id` AS flea_pkref_id, `my_photo`.* FROM `my_photo`   ORDER BY number desc LIMIT 4
+[2015-05-05 17:32:44] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 2  ORDER BY id asc LIMIT 1
+[2015-05-05 17:32:44] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:32:44] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:32:44] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 2  ORDER BY id desc LIMIT 1
+[2015-05-05 17:32:44] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:32:44] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:32:44] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 3  ORDER BY id desc
+[2015-05-05 17:32:44] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:32:44] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:32:44] [debug] :sql: SELECT COUNT(`my_showmess`.`id`) FROM `my_showmess` WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 3
+[2015-05-05 17:32:44] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 3  ORDER BY number desc,id desc LIMIT 0, 12
+[2015-05-05 17:32:44] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:32:44] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:32:44] [debug] :sql: SELECT  `my_url`.* FROM `my_url`   ORDER BY id desc
+[2015-05-05 17:32:44] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 4 AND `my_showmess`.`hot` = 1  ORDER BY id desc LIMIT 3
+[2015-05-05 17:32:44] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 4  ORDER BY id desc
+[2015-05-05 17:32:44] [debug] :sql: SELECT  `my_config`.* FROM `my_config`  
+[2015-05-05 17:32:44 0.49843900] ======= FleaPHP End (elapsed: 0.015884 seconds) =======
+
+[2015-05-05 17:32:45 0.20755600] ======= FleaPHP Loaded =======
+[2015-05-05 17:32:45] REQUEST_URI: /index.php?page=0
+[2015-05-05 17:32:45] [debug] :sql: SELECT VERSION()
+[2015-05-05 17:32:45] [debug] :sql: SET NAMES 'utf8'
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`   ORDER BY number asc
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('1','2','3','4','5','6','7','8','9','10','11','12','13')
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` = 'x' AND `my_info_cate`.`hidden` = '0'  ORDER BY number asc
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('1','11')
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_config`.* FROM `my_config`  
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 2  LIMIT 1
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('2')
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 3  LIMIT 1
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('3')
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 4  LIMIT 1
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('4')
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 5  LIMIT 1
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('5')
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 6  LIMIT 1
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('6')
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_photo`.`id` AS flea_pkref_id, `my_photo`.* FROM `my_photo`   ORDER BY number desc LIMIT 4
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 2  ORDER BY id asc LIMIT 1
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 2  ORDER BY id desc LIMIT 1
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 3  ORDER BY id desc
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:32:45] [debug] :sql: SELECT COUNT(`my_showmess`.`id`) FROM `my_showmess` WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 3
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 3  ORDER BY number desc,id desc LIMIT 0, 12
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_url`.* FROM `my_url`   ORDER BY id desc
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 4 AND `my_showmess`.`hot` = 1  ORDER BY id desc LIMIT 3
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 4  ORDER BY id desc
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_config`.* FROM `my_config`  
+[2015-05-05 17:32:45 0.22534900] ======= FleaPHP End (elapsed: 0.017793 seconds) =======
+
+[2015-05-05 17:32:45 0.79825400] ======= FleaPHP Loaded =======
+[2015-05-05 17:32:45] REQUEST_URI: /index.php?page=0
+[2015-05-05 17:32:45] [debug] :sql: SELECT VERSION()
+[2015-05-05 17:32:45] [debug] :sql: SET NAMES 'utf8'
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`   ORDER BY number asc
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('1','2','3','4','5','6','7','8','9','10','11','12','13')
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` = 'x' AND `my_info_cate`.`hidden` = '0'  ORDER BY number asc
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('1','11')
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_config`.* FROM `my_config`  
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 2  LIMIT 1
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('2')
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 3  LIMIT 1
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('3')
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 4  LIMIT 1
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('4')
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 5  LIMIT 1
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('5')
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 6  LIMIT 1
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('6')
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_photo`.`id` AS flea_pkref_id, `my_photo`.* FROM `my_photo`   ORDER BY number desc LIMIT 4
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 2  ORDER BY id asc LIMIT 1
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 2  ORDER BY id desc LIMIT 1
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 3  ORDER BY id desc
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:32:45] [debug] :sql: SELECT COUNT(`my_showmess`.`id`) FROM `my_showmess` WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 3
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 3  ORDER BY number desc,id desc LIMIT 0, 12
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:32:45] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_url`.* FROM `my_url`   ORDER BY id desc
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 4 AND `my_showmess`.`hot` = 1  ORDER BY id desc LIMIT 3
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 4  ORDER BY id desc
+[2015-05-05 17:32:45] [debug] :sql: SELECT  `my_config`.* FROM `my_config`  
+[2015-05-05 17:32:45 0.81258800] ======= FleaPHP End (elapsed: 0.014334 seconds) =======
+
+[2015-05-05 17:33:31 0.43241900] ======= FleaPHP Loaded =======
+[2015-05-05 17:33:31] REQUEST_URI: /index.php?page=0
+[2015-05-05 17:33:31] [debug] :sql: SELECT VERSION()
+[2015-05-05 17:33:31] [debug] :sql: SET NAMES 'utf8'
+[2015-05-05 17:33:31] [debug] :sql: SHOW FULL COLUMNS FROM `my_info_cate`
+[2015-05-05 17:33:31] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`   ORDER BY number asc
+[2015-05-05 17:33:31] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('1','2','3','4','5','6','7','8','9','10','11','12','13')
+[2015-05-05 17:33:31] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` = 'x' AND `my_info_cate`.`hidden` = '0'  ORDER BY number asc
+[2015-05-05 17:33:31] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('1','11')
+[2015-05-05 17:33:31] [debug] :sql: SHOW FULL COLUMNS FROM `my_config`
+[2015-05-05 17:33:31] [debug] :sql: SELECT  `my_config`.* FROM `my_config`  
+[2015-05-05 17:33:31] [debug] :sql: SHOW FULL COLUMNS FROM `my_photo`
+[2015-05-05 17:33:31] [debug] :sql: SHOW FULL COLUMNS FROM `my_url`
+[2015-05-05 17:33:31] [debug] :sql: SHOW FULL COLUMNS FROM `my_showmess`
+[2015-05-05 17:33:31] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 2  LIMIT 1
+[2015-05-05 17:33:31] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('2')
+[2015-05-05 17:33:31] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 3  LIMIT 1
+[2015-05-05 17:33:31] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('3')
+[2015-05-05 17:33:31] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 4  LIMIT 1
+[2015-05-05 17:33:31] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('4')
+[2015-05-05 17:33:31] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 5  LIMIT 1
+[2015-05-05 17:33:31] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('5')
+[2015-05-05 17:33:31] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 6  LIMIT 1
+[2015-05-05 17:33:31] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('6')
+[2015-05-05 17:33:31] [debug] :sql: SELECT  `my_photo`.`id` AS flea_pkref_id, `my_photo`.* FROM `my_photo`   ORDER BY number desc LIMIT 4
+[2015-05-05 17:33:31] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 2  ORDER BY id asc LIMIT 1
+[2015-05-05 17:33:31] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:33:31] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:33:31] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 2  ORDER BY id desc LIMIT 1
+[2015-05-05 17:33:31] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:33:31] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:33:31] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 3  ORDER BY id desc
+[2015-05-05 17:33:31] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:33:31] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:33:31] [debug] :sql: SELECT COUNT(`my_showmess`.`id`) FROM `my_showmess` WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 3
+[2015-05-05 17:33:31] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 3  ORDER BY number desc,id desc LIMIT 0, 12
+[2015-05-05 17:33:31] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:33:31] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:33:31] [debug] :sql: SELECT  `my_url`.* FROM `my_url`   ORDER BY id desc
+[2015-05-05 17:33:31] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 4 AND `my_showmess`.`hot` = 1  ORDER BY id desc LIMIT 3
+[2015-05-05 17:33:31] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 4  ORDER BY id desc
+[2015-05-05 17:33:31] [debug] :sql: SELECT  `my_config`.* FROM `my_config`  
+[2015-05-05 17:33:31 0.46355200] ======= FleaPHP End (elapsed: 0.031133 seconds) =======
+
+[2015-05-05 17:34:53 0.54177700] ======= FleaPHP Loaded =======
+[2015-05-05 17:34:53] REQUEST_URI: /index.php?page=0
+[2015-05-05 17:34:53] [debug] :sql: SELECT VERSION()
+[2015-05-05 17:34:53] [debug] :sql: SET NAMES 'utf8'
+[2015-05-05 17:34:53] [debug] :sql: SHOW FULL COLUMNS FROM `my_info_cate`
+[2015-05-05 17:34:53] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`   ORDER BY number asc
+[2015-05-05 17:34:53] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('1','2','3','4','5','6','7','8','9','10','11','12','13')
+[2015-05-05 17:34:53] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` = 'x' AND `my_info_cate`.`hidden` = '0'  ORDER BY number asc
+[2015-05-05 17:34:53] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('1','11')
+[2015-05-05 17:34:53] [debug] :sql: SHOW FULL COLUMNS FROM `my_config`
+[2015-05-05 17:34:53] [debug] :sql: SELECT  `my_config`.* FROM `my_config`  
+[2015-05-05 17:34:53] [debug] :sql: SHOW FULL COLUMNS FROM `my_photo`
+[2015-05-05 17:34:53] [debug] :sql: SHOW FULL COLUMNS FROM `my_url`
+[2015-05-05 17:34:53] [debug] :sql: SHOW FULL COLUMNS FROM `my_showmess`
+[2015-05-05 17:34:53] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 2  LIMIT 1
+[2015-05-05 17:34:53] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('2')
+[2015-05-05 17:34:53] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 3  LIMIT 1
+[2015-05-05 17:34:53] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('3')
+[2015-05-05 17:34:53] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 4  LIMIT 1
+[2015-05-05 17:34:53] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('4')
+[2015-05-05 17:34:53] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 5  LIMIT 1
+[2015-05-05 17:34:53] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('5')
+[2015-05-05 17:34:53] [debug] :sql: SELECT  `my_info_cate`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`id` = 6  LIMIT 1
+[2015-05-05 17:34:53] [debug] :sql: SELECT `my_info_cate`.`p_id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate`  WHERE `my_info_cate`.`p_id` IN ('6')
+[2015-05-05 17:34:53] [debug] :sql: SELECT  `my_photo`.`id` AS flea_pkref_id, `my_photo`.* FROM `my_photo`   ORDER BY number desc LIMIT 4
+[2015-05-05 17:34:53] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 2  ORDER BY id asc LIMIT 1
+[2015-05-05 17:34:53] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:34:53] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:34:53] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 2  ORDER BY id desc LIMIT 1
+[2015-05-05 17:34:53] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:34:53] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('1') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:34:53] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 3  ORDER BY id desc
+[2015-05-05 17:34:53] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:34:53] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:34:53] [debug] :sql: SELECT COUNT(`my_showmess`.`id`) FROM `my_showmess` WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 3
+[2015-05-05 17:34:53] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 3  ORDER BY number desc,id desc LIMIT 0, 12
+[2015-05-05 17:34:53] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_id` = `my_info_cate`.`id` 
+[2015-05-05 17:34:53] [debug] :sql: SELECT `my_showmess`.`id` AS flea_pkref_id, `my_info_cate`.* FROM `my_info_cate` LEFT JOIN `my_showmess` ON `my_showmess`.`id` IN ('2') WHERE `my_showmess`.`ic_sort` = `my_info_cate`.`id` 
+[2015-05-05 17:34:53] [debug] :sql: SELECT  `my_url`.* FROM `my_url`   ORDER BY id desc
+[2015-05-05 17:34:53] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 4 AND `my_showmess`.`hot` = 1  ORDER BY id desc LIMIT 3
+[2015-05-05 17:34:53] [debug] :sql: SELECT  `my_showmess`.`id` AS flea_pkref_id, `my_showmess`.* FROM `my_showmess`  WHERE `my_showmess`.`p_ic_id` = 1 AND `my_showmess`.`ic_id` = 4  ORDER BY id desc
+[2015-05-05 17:34:53] [debug] :sql: SELECT  `my_config`.* FROM `my_config`  
+[2015-05-05 17:34:53 0.56326800] ======= FleaPHP End (elapsed: 0.021491 seconds) =======
+
