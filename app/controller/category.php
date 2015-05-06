@@ -2,8 +2,6 @@
 //error_reporting(0);
 FLEA::loadClass ( 'base_mai_controller' );
 class controller_category extends base_mai_controller {
-	var $view = 'products.html';
-        var $category_root_id = 11;
 
 	function controller_category(){
 		parent::base_mai_controller ();	

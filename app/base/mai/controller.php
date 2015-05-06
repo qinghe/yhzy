@@ -1,7 +1,8 @@
 <?php
 FLEA::loadClass ( 'base_controller' );
 class base_mai_controller extends base_controller {
-	
+    var $category_root_id = 11;
+    
 	function base_mai_controller() {
 		parent::base_controller ();
 		//初始化系统参数
